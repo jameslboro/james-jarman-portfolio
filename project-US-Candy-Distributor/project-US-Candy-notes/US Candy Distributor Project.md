@@ -26,8 +26,8 @@
 	- ~~determine columns required for each visual~~
 	- ~~select information in sql, bring to power bi~~
 - go through page 2 and refine aesthetics and formatting
-- setup github repo for power bi project
-- upload pages 1 and 2 of power bi report to github
+- ~~setup github repo for power bi project~~
+- ~~upload pages 1 and 2 of power bi report to github~~
 - start creating readme file explaining project
 - start page 3 planning; figure out what data is required and start working on sql query etc.
 	- determine waht visuals need to be created and what information is required.
