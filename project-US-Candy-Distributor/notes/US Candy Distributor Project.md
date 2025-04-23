@@ -4,10 +4,9 @@
 	2. ~~determine what data needs to be imported to achieve~~
 	3. ~~import data into Power BI~~
 	4. ~~create basic graphs.~~
-2. q2: Factory to Customer Shipping Analysis - Question: What is the average shipping distance from factories to customers?
+2. ~~q2: Factory to Customer Shipping Analysis - Question: What is the average shipping distance from factories to customers?~~
 	1. 
-		1. important note: ONLY ANALYSING ORDERS TO US
-			1. FILTER OUT ALL ZIP WHICH ARE NOT NUMERIC, REMOVING 'X' ORDERS
+		1. ~~important note: ONLY ANALYSING ORDERS TO US~~
 
 
 - ~~determine a colour scheme, create a theme~~
@@ -25,7 +24,7 @@
 	- ~~draft layout~~
 	- ~~determine columns required for each visual~~
 	- ~~select information in sql, bring to power bi~~
-- go through page 2 and refine aesthetics and formatting
+- ~~go through page 2 and refine aesthetics and formatting~~
 - ~~setup github repo for power bi project~~
 - ~~upload pages 1 and 2 of power bi report to github~~
 - start creating readme file explaining project
