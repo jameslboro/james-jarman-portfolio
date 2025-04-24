@@ -1,35 +1,35 @@
-- kpi cards:
-	- Total Revenue- SUM of sales across all states
-	- Best-Performing State- State with highest total revenue (DAX)
-	- Lowest-Performing State- State with lowest revenue (DAX)
-	- Avg Revenue per State- Helpful to compare large vs small states
-	- Best-Performing Region- State with highest total revenue (DAX)
-	- Lowest-Performing Region- State with lowest revenue (DAX)
+- ~~kpi cards:~~
+	- ~~Total Revenue- SUM of sales across all states~~
+	- ~~Best-Performing State- State with highest total revenue (DAX)~~
+	- ~~Lowest-Performing State- State with lowest revenue (DAX)~~
+	- ~~Avg Revenue per State- Helpful to compare large vs small states~~
+	- ~~Best-Performing Region- State with highest total revenue (DAX)~~
+	- ~~Lowest-Performing Region- State with lowest revenue (DAX)~~
 - ~~sales by state (choropleth map)~~
 	- ~~in python: plotly express~~
 	- ~~data required~~
 		- ~~list of states~~
 		- ~~list of two-letter state codes~~
 		- ~~list of total revenue~~
-- revenue by region (bar chart)
-	- clustered column or horizontal
-	- data required:
-		- region (create hierarchy)
-		- revenue
-- matrix or table for drilldown
-	- rows: region > state > city > postcode
-	- columns: total revenue > units sold > orders > avg order value
-- category sales by region (stacked bar chart)
-	- data required:
-		- region (create hierarchy: region, state, city, postcode)
-		- total revenue
-		- product division (hierarchy: division > product)
-- state vs month revenue (heatmap table) - top 10 states: 
-	- data required:
-		- states, 
-		- months
-		- revenue
-- filters: year, month, division, region, state
+- ~~revenue by region (bar chart)~~
+	- ~~clustered column or horizontal~~
+	- ~~data required:~~
+		- ~~region (create hierarchy)~~
+		- ~~revenue~~
+- ~~matrix or table for drilldown~~
+	- ~~rows: region > state > city > postcode~~
+	- ~~columns: total revenue > units sold > orders > avg order value~~
+- ~~category sales by region (stacked bar chart)~~
+	- ~~data required:~~
+		- ~~region (create hierarchy: region, state, city, postcode)~~
+		- ~~total revenue~~
+		- ~~product division (hierarchy: division > product)~~
+- ~~state vs month revenue (heatmap table) - top 10 states:~~ 
+	- ~~data required:~~
+		- ~~states,~~ 
+		- ~~months~~
+		- ~~revenue~~
+- ~~filters: year, month, division, region, state~~
 
-data required:
+~~data required:~~
 - 
