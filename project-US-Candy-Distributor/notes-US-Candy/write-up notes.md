@@ -1,0 +1,11 @@
+- i used the following theme: https://community.fabric.microsoft.com/t5/Themes-Gallery/Financial-Dashboard/td-p/2444455
+- there is a typo for one product in the products and sales tables
+	- first let us update this, using sql query: update_candy_products.sql
+- after working with analysing data, it is noted that there are duplicates across the order id column, however, they are not immediate duplicates as it seems there are different amounts for the number of units sold and hence the sales and profit columns. for simplicity (as some order_id has exact duplicates with the number of units sold, etc.) we will assume this is because of partial shipments or line item breakdowns: sometimes, a single order ID might be split into multiple order lines (e.g., different package sizes, partial fulfilments). for this reason, we will not remove duplicates based on order_id, but instead merge duplicates by grouping by order_id, and taking the sum of columns: Sales, Units, Gross Profit, Cost. for example: Order ID = 'US-2024-104731-CHO-FUD-51000' has 5 entries, and we will merge them into one. we also drop the row_id column.
+	- as a result this trims the number of rows down from 10,194 to 8,549
+	- number of orders will be aggregated as a distinct count.
+	- we have done this in sql query: 
+- for sales performance analysis we will use all orders
+- for analysis to do with shipping we will only use the orders made in the united states
+	- hence removing orders to Canada - this is because we do not have the zip codes for Canada, leaving only 8,389 orders (US only and merged duplicates on order_id column)
+- when creating the map visuals (limited power bi subscription - hence had to use python visuals)
