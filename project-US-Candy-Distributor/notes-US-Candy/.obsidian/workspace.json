@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Page 4 Seasonality & Sales Trends PLAN.md",
+                "file": "write-up notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Page 4 Seasonality & Sales Trends PLAN"
+              "title": "write-up notes"
             }
           }
         ],
@@ -197,12 +197,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2ec77b264e8e2aa0",
+  "active": "4b179c8e59d92f0a",
   "lastOpenFiles": [
+    "Page 4 Seasonality & Sales Trends PLAN.md",
     "Untitled",
     "US Candy Distributor Project.md",
     "page 3 regional sales trends plan.md",
-    "Page 4 Seasonality & Sales Trends PLAN.md",
     "write-up notes.md",
     "game plan.md",
     "write-up",

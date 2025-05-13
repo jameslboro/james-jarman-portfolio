@@ -79,13 +79,13 @@ The project was built using **SQL**, **Power BI**, and **Python**, and is design
 ### Report Previews
 
 #### Sales Performance Page
-![Sales Performance Screenshot](./data/power_bi_sales_performance.png)
+![Sales Performance Screenshot](./pbi_reports/figures/1_power_bi_sales_performance.png)
 
 #### Shipping Analysis Page
-![Shipping Analysis Screenshot](./data/power_bi_shipping_analysis.png)
+![Shipping Analysis Screenshot](./pbi_reports/figures/2_power_bi_shipping_analysis.png)
 
 #### Regional Trends Page
-![Regional Trends Screenshot](./data/power_bi_regional_trends.png)
+![Regional Trends Screenshot](./pbi_reports/figures/3_power_bi_regional_trends.png)
 
 ---
 
