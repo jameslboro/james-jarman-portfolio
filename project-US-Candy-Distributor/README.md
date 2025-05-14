@@ -1,7 +1,9 @@
 # US Candy Distributor Sales & Shipping Analysis
 
-This Power BI dashboard explores sales, shipping, and regional performance for a US-based candy distributor using raw order data from 2021–2024.  
+This Power BI report explores sales, shipping, and regional performance for a US-based candy distributor using raw order data from 2021–2024.  
 The project was built using **SQL**, **Power BI**, and **Python**, and is designed to uncover product-level profitability, optimise shipping logistics, and guide strategic decisions across regions and factories.
+
+View the full [Project Brief (PDF)](./project_brief_US_Candy_Distributor.pdf) for business context, goals, and stakeholder questions.
 
 ---
 
