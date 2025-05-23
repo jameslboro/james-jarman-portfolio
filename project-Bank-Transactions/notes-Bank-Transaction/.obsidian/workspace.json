@@ -11,14 +11,10 @@
             "id": "8b57e49e4fee3143",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "current jupyter notebook structure.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "current jupyter notebook structure"
+              "title": "New tab"
             }
           }
         ]
@@ -140,13 +136,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "exploratory data analysis.md",
+                "file": "current jupyter notebook structure.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of exploratory data analysis"
+              "title": "Outline of current jupyter notebook structure"
             }
           }
         ]

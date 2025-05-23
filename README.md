@@ -1,4 +1,4 @@
-# 📊 James Jarman – Data Analyst Portfolio
+# James Jarman – Data Analyst Portfolio
 
 Welcome to my data analytics portfolio. I am **James Jarman**, a First-Class Mathematics graduate with a passion for uncovering insights through data. This repository is a collection of self-driven projects designed to demonstrate my technical skills and analytical thinking, developed through independent study and professional certification programmes.
 
@@ -6,7 +6,7 @@ Whether you are a recruiter, hiring manager, or fellow data enthusiast—thank y
 
 ---
 
-## 📁 Projects
+## Projects
 
 ### 1. [Project – Bank Transactions](https://github.com/jameslboro/james-jarman-portfolio/tree/main/project-Bank-Transactions) *(In Progress)*  
 **Tools:** Python, Pandas, Seaborn, Plotly, Jupyter Notebooks  
@@ -32,7 +32,7 @@ An early-stage project analysing environmental data. Initial cleaning and visual
 
 ---
 
-## 🛠️ Tools & Technologies
+## Tools & Technologies
 
 - **Programming:** Python (Pandas, NumPy, Matplotlib, Seaborn, Plotly), SQL (T-SQL, MSMSS), MATLAB  
 - **Data Tools:** Jupyter Notebooks, Power BI, Excel (Power Query, PivotTables)  
@@ -40,7 +40,7 @@ An early-stage project analysing environmental data. Initial cleaning and visual
 
 ---
 
-## 📜 About Me
+## About Me
 
 I am a recent graduate (July 2024) from **Loughborough University**, where I achieved First Class Honours in Mathematics. Alongside my degree, I have undertaken hands-on technical training through certifications from IBM and Microsoft, and built this portfolio to showcase my skills in practice.
 
@@ -50,7 +50,7 @@ My previous work experience in the property sector allowed me to apply data-driv
 
 ---
 
-## 📫 Let’s Connect
+## Let’s Connect
 
 - **LinkedIn:** [linkedin.com/in/james-a-jarman](https://www.linkedin.com/in/james-a-jarman/)  
 - **GitHub:** [github.com/jameslboro](https://github.com/jameslboro)  
@@ -58,7 +58,7 @@ My previous work experience in the property sector allowed me to apply data-driv
 
 ---
 
-## 💡 Future Plans
+## Future Plans
 
 - Complete current project write-ups and visualisations  
 - Add version-controlled notebooks with clear Markdown summaries  
