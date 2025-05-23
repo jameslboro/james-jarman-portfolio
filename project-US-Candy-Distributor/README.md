@@ -1,9 +1,9 @@
 # US Candy Distributor Sales & Shipping Analysis
 
 This Power BI report explores sales, shipping, and regional performance for a US-based candy distributor using raw order data from 2021–2024.  
-The project was built using **SQL**, **Power BI**, and **Python**, and is designed to uncover product-level profitability, optimise shipping logistics, and guide strategic decisions across regions and factories.
+This project was developed using **SQL**, **Power BI**, and **Python**, and is designed to uncover product-level profitability, optimise shipping logistics, and guide strategic decisions across regions and factories.
 
-View the full [Project Brief (PDF)](./project_brief_US_Candy_Distributor.pdf) for business context, goals, and stakeholder questions.
+View the full [Project Brief (PDF)](./project_brief.pdf) for business context, goals, and stakeholder questions.
 
 ---
 
@@ -35,7 +35,7 @@ View the full [Project Brief (PDF)](./project_brief_US_Candy_Distributor.pdf) fo
 |--------------------|---------------------------------------|
 | SQL Server (T-SQL) | Data cleaning and transformation      |
 | Power BI           | Data modelling and dashboard creation  |
-| Python (in Power BI) | Map visualisations (geospatial)    |
+| Python (via Power BI Python visuals) | Map visualisations (geospatial)    |
 | CSV Files          | Raw data input                        |
 | DAX                | Custom measures and KPIs              |
 
@@ -52,15 +52,12 @@ View the full [Project Brief (PDF)](./project_brief_US_Candy_Distributor.pdf) fo
 
 ### Data Cleaning & Filtering
 - Final cleaned dataset reduced to **8,549 orders**.
-- For **shipping distance analysis**, only **U.S. orders** were retained (8,389 rows) due to missing Canadian location data.
+- For **shipping distance analysis**, only **US orders** were used (8,389 rows) due to missing Canadian location data.
 
 ### Data Modelling
 - Created star schema in Power BI with relationships between fact and dimension tables.
 - Built custom DAX measures (e.g., total revenue, average distance).
 - Used **Import Mode** for optimal performance.
-
-#### Star Schema Diagram
-![Star Schema](./data/star_schema.png)
 
 ### Visualisations
 - Created report pages per key question.
@@ -71,23 +68,26 @@ View the full [Project Brief (PDF)](./project_brief_US_Candy_Distributor.pdf) fo
 
 ## Dashboard Overview
 
-| Report Page                     | Focus Area                                |
+| Report Page                    | Focus Area                                 |
 |--------------------------------|--------------------------------------------|
 | Sales Performance Analysis     | Division/product revenue and profitability |
 | Shipping Analysis              | Average shipping distances and logistics   |
 | Regional Sales Trends          | Best/worst-performing U.S. regions         |
-| Seasonality & Trends *(WIP)*  | Month-on-month sales and trends            |
+| Seasonality & Trends           | Month-on-month sales and trends            |
 
 ### Report Previews
 
 #### Sales Performance Page
-![Sales Performance Screenshot](./pbi_reports/figures/1_power_bi_sales_performance.png)
+![Sales Performance Screenshot](./reports/screenshots/)
 
 #### Shipping Analysis Page
-![Shipping Analysis Screenshot](./pbi_reports/figures/2_power_bi_shipping_analysis.png)
+![Shipping Analysis Screenshot](./reports/screenshots/)
 
-#### Regional Trends Page
-![Regional Trends Screenshot](./pbi_reports/figures/3_power_bi_regional_trends.png)
+#### Regional Sales Page
+![Regional Trends Screenshot](./reports/screenshots/)
+
+#### Seasonality & Sales Page
+![Seasonality Trends Screenshot](./reports/screenshots/)
 
 ---
 
@@ -108,17 +108,23 @@ View the full [Project Brief (PDF)](./project_brief_US_Candy_Distributor.pdf) fo
 - **Wyoming** has the lowest revenue.
 - **Pacific region** significantly outperforms others; **Gulf region** underperforms.
 
+### Seasonality & Trends
+- **Sales peak in November and December**, aligning with major U.S. holidays.
+- **February is consistently the lowest-performing month**, likely due to post-holiday slowdowns.
+- Revenue shows **steady annual growth** from 2021 through 2024.
+- Forecasting suggests **continued upward demand**, with expected peaks in late Q4.
+
 ---
 
 ## Next Steps & Future Improvements
 
-If more time or data were available:
+If additional time or data were available, further analysis could include:
 
-- Include **Canadian orders** once zip/location data becomes available.
-- Add **forecasting models** based on historical seasonality and sales.
-- Expand **shipping cost efficiency** analysis (distance vs. cost).
-- Add deeper **customer segmentation** and cohort tracking.
-- Improve interactivity with **drill-throughs** and **tooltip insights** in Power BI.
+- Incorporating **Canadian orders** once complete geolocation data is available.
+- Expanding on **forecasting models** with more robust time series approaches.
+- Analysing **shipping cost efficiency** by comparing distance to actual cost data.
+- Developing **customer segmentation** and retention metrics based on behaviour or geography.
+- Enhancing interactivity in Power BI with **drill-throughs** and **dynamic tooltips**.
 
 ---
 
@@ -126,14 +132,19 @@ If more time or data were available:
 
 project-root/
 ├── data/
-│   ├── *.csv                 # Raw data files
-│   ├── *.sql                 # SQL cleaning and transformation scripts
-│   ├── *.ipynb               # Python mapping code
-│   └── *.png                 # Power BI screenshots
-├── notes-US-Candy/
-│   ├── *.md                  # Project notes (Obsidian vault)
-│   └── .obsidian/            # Obsidian configuration files
-├── pbi_reports/
-│   ├── report_US_Candy_Distributor.pbix
-│   └── theme.json            # Custom Power BI theme
-└── README.md                 # You are here!
+│ ├── raw/ # Original CSV files
+│ ├── processed/ # Cleaned and finalised datasets
+│ ├── notebooks/ # Python notebooks for geospatial preprocessing
+│ └── sql_queries/ # SQL scripts for transformation and analysis
+├── reports/
+│ ├── US_Candy.pbix # Power BI report
+│ ├── theme.json # Custom Power BI theme
+│ ├── figures/ # Chart images used in README
+│ └── screenshots/ # Full-page Power BI screenshots
+├── docs/
+│ ├── insights.md # Written insights and summary
+│ ├── project_brief.pdf # Stakeholder business brief
+│ └── report_summary.pdf # Optional static export of dashboard
+├── notes/
+│ └── write_up_notes.md # Personal project notes (Obsidian-friendly)
+└── README.md
