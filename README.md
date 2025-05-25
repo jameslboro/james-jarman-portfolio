@@ -16,7 +16,7 @@ This project explores customer banking transactions to identify trends and behav
 
 ---
 
-### 2. [Project – US Candy Distributor](https://github.com/jameslboro/james-jarman-portfolio/tree/main/project-US-Candy-Distributor) *(In Progress)*  
+### 2. [Project – US Candy Distributor](https://github.com/jameslboro/james-jarman-portfolio/tree/main/project-US-Candy-Distributor)
 **Tools:** SQL (T-SQL), Microsoft SQL Server, Power BI  
 **Dataset:** Maven Analytics – [US Candy Distributor](https://mavenanalytics.io/data-playground?order=date_added%2Cdesc&search=US%20Candy%20Distributor)
 
