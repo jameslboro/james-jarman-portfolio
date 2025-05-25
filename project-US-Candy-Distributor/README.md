@@ -91,23 +91,9 @@ View the full [Project Brief (PDF)](./project_brief.pdf) for business context, g
 
 ---
 
-## Viewing the Power BI Report
-
-Due to workspace and subscription limitations in Power BI Service (Publish to Web not available for free accounts), this dashboard is not hosted online.
-
-However, you can view the full interactive dashboard by downloading and opening the `.pbix` file in **Power BI Desktop**:
-
-👉 [`US_Candy.pbix`](./reports/US_Candy.pbix)
-
-> To explore the report:
-> - Open the file in Power BI Desktop (free from Microsoft)
-> - Use slicers to filter by year, region, division, etc.
-> - Hover over charts for tooltips and insights
-> - Navigate between pages using the built-in buttons
-
----
-
 ## Key Insights
+
+A summary of findings from the Power BI dashboard. For detailed insights and business recommendations, see the full [insights.md](./docs/insights.md) file or refer to the **Insights & Recommendations** page within the Power BI report.
 
 ### Sales Drivers
 - **Chocolate division** leads in both revenue and gross profit.
@@ -130,6 +116,21 @@ However, you can view the full interactive dashboard by downloading and opening 
 - Revenue shows **steady annual growth** from 2021 through 2024.
 - Forecasting suggests **continued upward demand**, with expected peaks in late Q4.
 
+---
+
+## Viewing the Power BI Report
+
+Due to workspace and subscription limitations in Power BI Service (Publish to Web not available for free accounts), this dashboard is not hosted online.
+
+However, you can view the full interactive dashboard by downloading and opening the `.pbix` file in **Power BI Desktop**:
+
+👉 [`US_Candy.pbix`](./reports/US_Candy.pbix)
+
+> To explore the report:
+> - Open the file in Power BI Desktop (free from Microsoft)
+> - Use slicers to filter by year, region, division, etc.
+> - Hover over charts for tooltips and insights
+> - Navigate between pages using the built-in buttons
 ---
 
 ## Next Steps & Future Improvements
