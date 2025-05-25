@@ -78,16 +78,32 @@ View the full [Project Brief (PDF)](./project_brief.pdf) for business context, g
 ### Report Previews
 
 #### Sales Performance Page
-![Sales Performance Screenshot](./reports/screenshots/)
+![Sales Performance Screenshot](./reports/screenshots/page_1.png)
 
 #### Shipping Analysis Page
-![Shipping Analysis Screenshot](./reports/screenshots/)
+![Shipping Analysis Screenshot](./reports/screenshots/page_2.png)
 
 #### Regional Sales Page
-![Regional Trends Screenshot](./reports/screenshots/)
+![Regional Trends Screenshot](./reports/screenshots/page_3.png)
 
 #### Seasonality & Sales Page
-![Seasonality Trends Screenshot](./reports/screenshots/)
+![Seasonality Trends Screenshot](./reports/screenshots/page_4.png)
+
+---
+
+## Viewing the Power BI Report
+
+Due to workspace and subscription limitations in Power BI Service (Publish to Web not available for free accounts), this dashboard is not hosted online.
+
+However, you can view the full interactive dashboard by downloading and opening the `.pbix` file in **Power BI Desktop**:
+
+👉 [`US_Candy.pbix`](./reports/US_Candy.pbix)
+
+> To explore the report:
+> - Open the file in Power BI Desktop (free from Microsoft)
+> - Use slicers to filter by year, region, division, etc.
+> - Hover over charts for tooltips and insights
+> - Navigate between pages using the built-in buttons
 
 ---
 
@@ -130,6 +146,7 @@ If additional time or data were available, further analysis could include:
 
 ## Project Structure
 
+```
 project-root/
 ├── data/
 │ ├── raw/ # Original CSV files
@@ -148,3 +165,4 @@ project-root/
 ├── notes/
 │ └── write_up_notes.md # Personal project notes (Obsidian-friendly)
 └── README.md
+```
