@@ -1,6 +1,6 @@
 # US Candy Distributor Sales & Shipping Analysis
 
-This Power BI report explores sales, shipping, and regional performance for a US-based candy distributor using raw order data from 2021–2024.  
+This Power BI report explores sales, shipping, and regional performance for a US-based candy distributor using raw order data from 2021–2024.
 This project was developed using **SQL**, **Power BI**, and **Python**, and is designed to uncover product-level profitability, optimise shipping logistics, and guide strategic decisions across regions and factories.
 
 View the full [Project Brief (PDF)](./project_brief.pdf) for business context, goals, and stakeholder questions.
@@ -9,14 +9,14 @@ View the full [Project Brief (PDF)](./project_brief.pdf) for business context, g
 
 ## Table of Contents
 
-- [Project Objectives](#-project-objectives)
-- [Tools & Technologies](#-tools--technologies)
-- [Process & Methods](#️-process--methods)
-- [Dashboard Overview](#-dashboard-overview)
-- [Key Insights](#-key-insights)
-- [Next Steps & Future Improvements](#-next-steps--future-improvements)
-- [Project Structure](#-project-structure)
-- [How to Use This Project](#-how-to-use-this-project)
+- [Project Objectives](#project-objectives)
+- [Tools & Technologies](#tools--technologies)
+- [Process & Methods](#️process--methods)
+- [Dashboard Overview](#dashboard-overview)
+- [Key Insights](#key-insights)
+- [Viewing the Power BI Report](#viewing-the-power-bi-report)
+- [Next Steps & Future Improvements](#next-steps--future-improvements)
+- [Project Structure](#project-structure)
 
 ---
 
@@ -115,6 +115,9 @@ A summary of findings from the Power BI dashboard. For detailed insights and bus
 - **February is consistently the lowest-performing month**, likely due to post-holiday slowdowns.
 - Revenue shows **steady annual growth** from 2021 through 2024.
 - Forecasting suggests **continued upward demand**, with expected peaks in late Q4.
+
+#### Insights Page
+![Insights Screenshot](./reports/screenshots/page_5.png)
 
 ---
 
