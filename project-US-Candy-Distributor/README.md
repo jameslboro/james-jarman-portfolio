@@ -154,6 +154,9 @@ project-root/
 │ ├── processed/ # Cleaned and finalised datasets
 │ ├── notebooks/ # Python notebooks for geospatial preprocessing
 │ └── sql_queries/ # SQL scripts for transformation and analysis
+│   ├── misc/ # Supporting scripts
+│   ├── powerbi_queries/ # Queries imported to Power BI
+│   └── views/ # SQL views created for modeling
 ├── reports/
 │ ├── US_Candy.pbix # Power BI report
 │ ├── theme.json # Custom Power BI theme
