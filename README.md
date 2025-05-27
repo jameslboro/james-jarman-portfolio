@@ -2,7 +2,7 @@
 
 Welcome to my data analytics portfolio. I am **James Jarman**, a First-Class Mathematics graduate with a passion for uncovering insights through data. This repository is a collection of self-driven projects designed to demonstrate my technical skills and analytical thinking, developed through independent study and professional certification programmes.
 
-Whether you are a recruiter, hiring manager, or fellow data enthusiast—thank you for visiting. Feel free to explore the projects below.
+Whether you are a recruiter, hiring manager, or fellow data enthusiast, thank you for visiting. Feel free to explore the projects below.
 
 ---
 
@@ -12,7 +12,7 @@ Whether you are a recruiter, hiring manager, or fellow data enthusiast—thank y
 **Tools:** Python, Pandas, Seaborn, Plotly, Jupyter Notebooks  
 **Dataset:** Kaggle – [Bank Transaction Dataset for Fraud Detection](https://www.kaggle.com/datasets/valakhorasani/bank-transaction-dataset-for-fraud-detection)
 
-This project explores customer banking transactions to identify trends and behaviours. It includes thorough exploratory data analysis (EDA), feature exploration, and insightful visualisations. Currently being written up for final conclusions and presentation.
+This project explores customer banking transactions to identify trends and behaviours. It includes thorough exploratory data analysis (EDA), feature exploration, and insightful visualisations. Currently being written up for conclusions and presentation.
 
 ---
 
@@ -20,7 +20,7 @@ This project explores customer banking transactions to identify trends and behav
 **Tools:** SQL (T-SQL), Microsoft SQL Server, Power BI  
 **Dataset:** Maven Analytics – [US Candy Distributor](https://mavenanalytics.io/data-playground?order=date_added%2Cdesc&search=US%20Candy%20Distributor)
 
-This project simulates operations for a fictional US-based candy distributor. The data was cleaned and transformed in SQL, then visualised in a multi-page Power BI report to explore sales, logistics, and factory performance across regions. One of the more developed projects—currently refining visuals and DAX calculations.
+This project simulates operations for a fictional US-based candy distributor. The data was cleaned and transformed in SQL, then visualised in a multi-page Power BI report to explore sales, logistics, and factory performance across regions.
 
 ---
 
