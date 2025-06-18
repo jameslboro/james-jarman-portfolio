@@ -51,7 +51,7 @@ Revenue increased significantly from 2016 to 2018; however, it is important to n
 - Notable spikes in revenue occurred in **November 2017** and **March–May 2018**, possibly due to seasonal promotions or campaigns.
 
 **Visualisation:**  
-![01_monthly_revenue_trend](./visualisations\01_monthly_revenue_trend.png)
+![01_monthly_revenue_trend](./visualisations/01_monthly_revenue_trend.png)
 
 ---
 
@@ -76,7 +76,7 @@ The top product categories by revenue highlight key drivers of sales on the plat
 This distribution suggests focusing marketing and inventory efforts on the top categories could maximise revenue, while also exploring growth potential in mid-tier categories.
 
 **Visualisation:**  
-![01_revenue_by_top20_product_categories](.\visualisations\01_revenue_by_top20_product_categories.png)
+![01_revenue_by_top20_product_categories](./visualisations/01_revenue_by_top20_product_categories.png)
 
 ---
 
@@ -91,7 +91,7 @@ The average order value varies significantly across states:
 This variation may reflect regional differences in consumer behavior, purchasing power, or product preferences. It could inform targeted marketing strategies or tailored promotions by state.
 
 **Visualisation:**  
-![01_average_order_value](.\visualisations\01_average_order_value.png)
+![01_average_order_value](./visualisations/01_average_order_value.png)
 
 <!-- ---
 
