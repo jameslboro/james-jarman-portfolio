@@ -93,46 +93,6 @@ This variation may reflect regional differences in consumer behavior, purchasing
 **Visualisation:**  
 ![01_average_order_value](./visualisations/01_average_order_value.png)
 
-<!-- ---
-
-### Exploratory: Revenue Discrepancy Checks
-
-To validate consistency across tables (`payments` vs. `order_items`), multiple revenue calculations were compared.
-
-**Findings:**  
-_(Note whether discrepancies exist and the decision made on which table to use for analysis.)_
-
-**Suggested Commentary:**  
-> Despite aligning on order status and filtering for completeness, `payments` and `order_items` produced different total revenues. Given the nature of the `payments` table as the financial source of truth, it was chosen as the authoritative revenue reference for this project.
-
----
-
-#### Data Consistency Checks
-
-Performed validation across key tables to identify:
-
-- Orders without payments
-- Orders without items
-- Inconsistent statuses for such cases
-
-**Summary of Issues:**  
-_(List any anomalies found. Include number of mismatches or examples, if necessary.)_
-
----
-
-#### Cleaned Revenue Calculations
-
-Used a CTE to filter only valid, fully matched orders across all relevant tables and re-ran revenue calculations.
-
-**Insight:**  
-_(Note if revenue alignment improved and whether the final method influenced results.)_
-
----
-
-### Conclusion
-
-The payments table was adopted as the source of truth for all revenue and AOV-related metrics due to more consistent alignment and financial relevance.
-
 ---
 
 ## 2. Customer Behaviour
@@ -146,53 +106,81 @@ This section investigates customer distribution, repeat buying behaviour, and hi
 ### Question 5: Which states or cities have the highest number of unique customers?
 
 **Insight:**  
-_(To be filled after reviewing query results. Example: São Paulo has the largest customer base, followed by Rio de Janeiro and Minas Gerais.)_
+Customer distribution is heavily concentrated in a few key states:
+- **São Paulo (SP)** dominates with **41,746** unique customers, more than three times the next highest state.
+- **Rio de Janeiro (RJ)** and **Minas Gerais (MG)** follow with **12,852** and **11,635** customers respectively.
+- Southern states like **Rio Grande do Sul (RS)**, **Paraná (PR)**, and **Santa Catarina (SC)** also show strong customer bases.
 
-**Suggested Visualisations:**  
-Bar chart of unique customers by state  
-Highlight map or label showing the top customer city
+At the city level, **São Paulo city** stands out with **15,540** unique customers — by far the largest urban customer base in the dataset. This reflects the state’s economic weight and population size.
+
+Understanding where customers are most concentrated can help tailor logistics, marketing, and customer support to the highest-demand areas.
+
+**Visualisation:**  
+![02_unique_customers_by_state](./visualisations/02_unique_customers_by_state.png)
 
 ---
 
 ### Question 6: What is the repeat purchase rate of customers?
 
 **Insight:**  
-_(To be filled after reviewing query results. Example: Approximately 16.4% of customers placed more than one order.)_
+Only **3.12%** of customers placed more than one order, indicating that the vast majority of shoppers (nearly **97%**) were **one-time buyers**.  
 
-**Suggested Visualisations:**  
-Pie chart or donut chart showing repeat vs. one-time customers
+This low repeat purchase rate suggests:
+- A potential reliance on customer acquisition rather than retention.
+- Opportunity to implement loyalty programs, remarketing campaigns, or subscription models to encourage repeat purchases.
+
+Improving retention could lead to more sustainable growth and better customer lifetime value (CLV).
 
 ---
 
 ### Question 7: How many customers place multiple orders and how often?
 
 **Insight:**  
-_(To be filled after reviewing query results. Example: Most repeat customers placed 2–3 orders, with a long tail distribution.)_
+Out of over **96,000 customers**, only **2,997** placed more than one order, confirming a **low repeat engagement**.  
 
-**Suggested Visualisations:**  
-Histogram or bar chart showing how many customers made 2, 3, 4, ... N orders
+Among repeat buyers:
+- The majority (**~91.6%**) placed exactly **2 orders**.
+- A small number placed 3 or more orders:
+  - 203 customers placed 3 orders
+  - 30 placed 4 orders
+  - Just 1 customer placed as many as **17 orders**
+
+This reflects a **long-tail distribution**, where high-frequency buyers are rare.  
+
+The sharp drop-off after 2–3 orders suggests untapped potential in nurturing existing customers into becoming loyal buyers.
+
+**Visualisation:**  
+![02_repeat_customers_by_order_count](./visualisations/02_repeat_customers_by_order_count.png)
 
 ---
 
 ### Question 8: Do high-value customers (top 10%) behave differently from others?
 
 **Insight:**  
-_(To be filled after reviewing query results. Example: High-value customers placed 3.2 times more orders and spent 4.5 times more on average.)_
+Yes, high-value customers exhibit significantly different behaviour compared to the rest:  
+- On average, **high-value customers** placed **~1.12 orders** and spent **R$641.55**,  
+- Whereas **other customers** placed **~1.03 orders** and spent just **R$113.81**.  
 
-**Suggested Visualisations:**  
-Side-by-side bar charts showing average orders and spend for high-value vs. others  
-Box plot to visualise spending distribution across segments
+Although the difference in order count is modest, the difference in **average spending** is substantial—**high-value customers spend over 5.6× more** on average.  
+
+This suggests that even with similar order frequency, high-value customers tend to purchase **more expensive items or larger baskets**, making them a key segment for premium offerings, loyalty programs, or early product access.
+
+**Visualisation:**  
+![02_order_count_and_total_spend](./visualisations/02_order_count_and_total_spend.png)
+
 
 ---
 
 ### Section 2: Key Takeaways
 
-- Major customer concentration is seen in a handful of key states and metropolitan cities.
-- Repeat purchase behaviour is present but not dominant; there is opportunity to increase retention.
-- High-value customers exhibit significantly stronger engagement metrics and should be a focus for loyalty initiatives.
+- **Customer concentration is regional:** Nearly half of all unique customers come from just three states — São Paulo, Rio de Janeiro, and Minas Gerais — with São Paulo city alone representing the largest single urban customer base. This regional skew has clear implications for marketing and logistics prioritisation.
+
+- **Low customer retention:** A striking **97%** of customers are **one-time buyers**, and the majority of repeat buyers only return for a second purchase. This highlights a critical opportunity to invest in **retention strategies**, such as loyalty programs or personalised follow-ups.
+
+- **High-value customers are big spenders, not frequent buyers:** The top 10% of customers spend over **5.6× more** than others, despite making only slightly more purchases. This indicates a strategic opportunity to nurture and retain these **high-spending segments** through tailored experiences or exclusive benefits.
 
 ---
-
+<!--
 ## 3. Logistics and Shipping Performance
 
 This section examines delivery efficiency, regional shipping delays, and how geographic distance impacts delivery timeliness — key for improving operational logistics.
@@ -375,4 +363,69 @@ Map overlay with urban/rural segmentation and delivery delays
 - Order volume is heavily concentrated in a few states, reflecting Brazil’s urban demographics and economic hubs.
 - Rural locations are linked with longer delivery times, which may warrant differentiated logistics strategies or clearer expectations.
 
---- -->
+--- 
+-->
+---
+
+## Exploratory: Revenue Discrepancy Checks
+
+To validate consistency across tables (`payments` vs. `order_items`), multiple revenue calculations were compared.
+
+### Findings
+Revenue calculations using the `payments` table were consistently higher than those using the `order_items` table:
+
+| Year | Revenue (Payments) | Revenue (Order Items) | Difference |
+|------|---------------------|------------------------|------------|
+| 2016 | R$47,969.31         | R$47,958.99            | +R$10.32   |
+| 2017 | R$7,001,143.26      | R$6,999,771.36         | +R$1,371.90|
+| 2018 | R$8,550,563.16      | R$8,549,172.74         | +R$1,390.42|
+
+These discrepancies persisted even after cleaning the dataset to include only orders with valid matches across `orders`, `payments`, and `order_items`.
+
+> Despite aligning on order status and filtering for completeness, `payments` and `order_items` produced different total revenues. Given the nature of the `payments` table as the financial source of truth, it was chosen as the authoritative revenue reference for this section.
+
+---
+
+### Data Consistency Checks
+
+Performed validation across key tables to identify:
+
+- **Orders without payments:**  
+  One order (`bfbd0f9bdef84302105ad712db648a6c`) was found with valid order items and a `delivered` status but no payment record.
+
+- **Orders without order items:**  
+  775 orders lacked entries in the `order_items` table. These spanned statuses such as:
+  - `canceled`
+  - `created`
+  - `invoiced`
+  - `shipped`
+  - `unavailable`
+
+- **Inconsistent data points:**
+  - `orders`: 99,441  
+  - `payments`: 99,440  
+  - `order_items`: 98,666  
+
+These inconsistencies are relatively low in volume but significant enough to affect aggregate revenue totals.
+
+---
+
+### Cleaned Revenue Calculations
+
+Used a CTE to filter only valid, fully matched orders across all relevant tables and re-ran revenue calculations:
+
+| Year | Cleaned Revenue (Payments) | Cleaned Revenue (Order Items) | Difference |
+|------|-----------------------------|-------------------------------|------------|
+| 2016 | R$47,891.58                 | R$47,815.53                   | +R$76.05   |
+| 2017 | R$7,001,143.26              | R$6,999,771.36                | +R$1,371.90|
+| 2018 | R$8,550,563.16              | R$8,549,172.74                | +R$1,390.42|
+
+### Insight
+
+Although revenue alignment improved with cleaned joins, discrepancies still remained. The persistent gaps reinforced the choice to use the `payments` table as the revenue source of truth due to its completeness, consistency, and financial integrity.
+
+---
+
+## Conclusion
+
+The `payments` table was adopted as the source of truth for all revenue and AOV-related metrics due to more consistent alignment and financial relevance. Minor anomalies in order data highlighted the importance of careful joins and validation across relational tables during analysis.
