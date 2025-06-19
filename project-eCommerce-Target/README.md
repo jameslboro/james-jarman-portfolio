@@ -6,13 +6,13 @@ This project investigates key performance and operational insights from a Brazil
 
 ## Contents
 
-1. [Data Sources](#data-sources)  
-2. [Sales Analysis](#1-sales-analysis)  
-3. [Customer Behaviour](#2-customer-behaviour)  
-4. [Logistics and Shipping Performance](#3-logistics-and-shipping-performance)  
-5. [Product Insights](#4-product-insights)  
-6. [Payment Behaviour](#5-payment-behaviour)  
-7. [Geospatial and Regional Insights](#6-geospatial-and-regional-insights)  
+0. [Data Sources](#data-sources)  
+1. [Sales Analysis](#section-1-sales-analysis) & [Key Takeaways](#section-1-key-takeaways)
+2. [Customer Behaviour](#section-2-customer-behaviour) & [Key Takeaways](#section-2-key-takeaways)
+3. [Logistics and Shipping Performance](#section-3-logistics-and-shipping-performance) & [Key Takeaways](#section-3-key-takeaways)
+4. [Product Insights](#section-4-product-insights)  
+5. [Payment Behaviour](#section-5-payment-behaviour)  
+6. [Geospatial and Regional Insights](#section-6-geospatial-and-regional-insights)  
 
 ---
 
@@ -32,7 +32,7 @@ For a full breakdown of the schema and relationships, refer to the [data diction
 
 ---
 
-## 1. Sales Analysis
+## **Section 1.** Sales Analysis
 
 This section addresses key revenue and performance metrics by exploring the payments, orders, and order_items tables.
 
@@ -95,7 +95,7 @@ This variation may reflect regional differences in consumer behavior, purchasing
 
 ---
 
-## 2. Customer Behaviour
+## **Section 2.** Customer Behaviour
 
 This section investigates customer distribution, repeat buying behaviour, and high-value customer segmentation to uncover trends that can guide marketing and retention strategies.
 
@@ -168,7 +168,6 @@ This suggests that even with similar order frequency, high-value customers tend 
 **Visualisation:**  
 ![02_order_count_and_total_spend](./visualisations/02_order_count_and_total_spend.png)
 
-
 ---
 
 ### Section 2: Key Takeaways
@@ -180,8 +179,8 @@ This suggests that even with similar order frequency, high-value customers tend 
 - **High-value customers are big spenders, not frequent buyers:** The top 10% of customers spend over **5.6× more** than others, despite making only slightly more purchases. This indicates a strategic opportunity to nurture and retain these **high-spending segments** through tailored experiences or exclusive benefits.
 
 ---
-<!--
-## 3. Logistics and Shipping Performance
+
+## **Section 3.** Logistics and Shipping Performance
 
 This section examines delivery efficiency, regional shipping delays, and how geographic distance impacts delivery timeliness — key for improving operational logistics.
 
@@ -189,47 +188,70 @@ This section examines delivery efficiency, regional shipping delays, and how geo
 
 ---
 
-### Question 9: What is the average delivery time across different states?
+## Question 9: What is the average delivery time across different states?
 
 **Insight:**  
-_(To be filled after reviewing query results. Example: Southern states such as São Paulo and Rio de Janeiro experience faster delivery times compared to more remote states.)_
+Delivery times vary considerably across Brazil, often reflecting geographic and infrastructure differences:
 
-**Suggested Visualisations:**  
-Bar chart ranking states by average delivery time  
-Choropleth map highlighting state-level differences
+- **São Paulo (SP)** stands out with the **fastest average delivery time of just 8.76 days**, likely due to its proximity to distribution centers and urban density.  
+- Other southeastern and southern states like **Paraná (PR)**, **Minas Gerais (MG)**, and **Distrito Federal (DF)** follow with delivery times ranging from **~12 to 13 days**.  
+- In contrast, **northern and northeastern states** — such as **Roraima (RR)**, **Amapá (AP)**, and **Amazonas (AM)** — experience much **longer delivery times**, averaging **26 to 29 days**.
+
+This wide spread highlights the **logistical challenges** of reaching remote or less-developed regions, which may require investment in regional distribution hubs or alternative delivery strategies.
+
+**Visualisation:**
+See Question 10 Visualisation.
 
 ---
 
 ### Question 10: Which regions experience the longest delivery delays?
 
 **Insight:**  
-_(To be filled after reviewing query results. Example: Northern and interior states show the most significant delays relative to the estimated delivery date.)_
+Interestingly, most deliveries across Brazil arrive **before the estimated delivery date**, indicating that the estimated dates are likely conservative.
 
-**Suggested Visualisations:**  
-Descending bar chart of average delivery delays by state  
-Colour-coded scheme to highlight problematic regions
+- **All states show negative average delays**, meaning early deliveries rather than actual delays.
+- However, the **magnitude of early delivery varies significantly**:
+  - **Acre (AC)**, **Rondônia (RO)**, and **Amapá (AP)** lead with the **earliest deliveries**, arriving **~19–20 days before** the estimated date.
+  - Major population centers like **São Paulo (SP)** and **Rio de Janeiro (RJ)** show more moderate early deliveries (~10–11 days ahead).
+  - States like **Alagoas (AL)** and **Maranhão (MA)** have the **least early delivery margin** (~8 days ahead).
+
+This pattern may reflect a **buffer baked into the estimated delivery dates**, especially for remote regions — possibly due to uncertainty in logistics routes.
+
+While not true "delays," these insights help identify where estimated delivery dates might be adjusted for better accuracy and customer expectation management.
+
+**Visualisation:**  
+![03_delivery_bar_chart](./visualisations/03_delivery_bar_chart.png)
 
 ---
 
 ### Question 11: Is there a relationship between shipping distance and delivery delay?
 
 **Insight:**  
-_(To be filled after reviewing query results. Example: There is a clear positive correlation between shipping distance and delivery delay, especially beyond 1,000 km.)_
+Yes — there is a **clear relationship** between shipping distance and delivery delay patterns, though not in the conventional sense of “late” deliveries.
 
-**Suggested Visualisations:**  
-Line chart or scatter plot showing average delay vs. distance bucket  
-Histogram to show order volume by distance bucket
+- **Most orders are delivered ahead of schedule**, regardless of distance.  
+- However, the **amount of early delivery tends to increase** with distance, particularly up to **~1,000–1,200 km**.
+- After 2,000 km, early delivery margins fluctuate and become less predictable, with some **outliers** showing actual **late deliveries** (e.g. 1–2 orders beyond 8,000 km).
+- This indicates that **estimated delivery times are set conservatively** across all distances, particularly for long-haul shipments.
+
+Although delays are mostly negative (early arrivals), the trend suggests logistics planners could **optimize delivery promises** more precisely for mid-range distances (500–2,000 km), where most volume occurs.
+
+**Visualisations:**  
+![03_avg_days_early](./visualisations/03_avg_days_early.png)
+![03_count_by_distance](./visualisations/03_count_by_distance.png)
 
 ---
 
 ### Section 3: Key Takeaways
 
-- Delivery speed and reliability vary significantly by state, highlighting the need for region-specific logistics strategies.
-- Remote regions face consistently higher delays, likely due to infrastructure and fulfilment challenges.
-- Distance is a strong predictor of delivery performance and should inform warehouse placement and service level agreements.
+- **Delivery speed varies widely by region:** São Paulo leads with the fastest average delivery time (~8.8 days), while remote northern and northeastern states face significantly longer times, often exceeding 25 days. This reflects geographic and infrastructure disparities impacting logistics efficiency.
+
+- **Deliveries generally arrive earlier than expected:** Across all states, actual delivery dates tend to precede the estimated dates by 8–20 days, especially in remote regions where larger buffers appear built into estimates. Understanding this can improve customer communication and date setting.
+
+- **Shipping distance correlates with delivery timing but not delays:** Longer shipping distances tend to result in larger early delivery margins up to ~1,000–1,200 km, beyond which delivery timing becomes more variable. This suggests room to optimize estimated delivery windows, especially for mid-range distances where most orders occur.
 
 ---
-
+<!--
 ## 4. Product Insights
 
 This section explores key product-level dynamics, including return trends, freight costs, and physical product characteristics, to better understand inventory, fulfilment, and shipping drivers.

@@ -143,14 +143,14 @@ order_with_distance AS (
         order_with_locations
 )
 
--- Step 7: Group by rounded distance to analyze relationship
+-- Step 7: Group by 200km buckets to analyse relationship
 SELECT
-    ROUND(distance_km) AS distance_bucket_km,
+    FLOOR(distance_km / 100) * 100 AS distance_bucket_km,
     AVG(delivery_delay_days) AS avg_delivery_delay_days,
     COUNT(*) AS num_orders
 FROM
     order_with_distance
 GROUP BY
-    distance_bucket_km
+    FLOOR(distance_km / 100) * 100
 ORDER BY
     distance_bucket_km;
