@@ -10,8 +10,8 @@ This project investigates key performance and operational insights from a Brazil
 1. [Sales Analysis](#section-1-sales-analysis) & [Key Takeaways](#section-1-key-takeaways)
 2. [Customer Behaviour](#section-2-customer-behaviour) & [Key Takeaways](#section-2-key-takeaways)
 3. [Logistics and Shipping Performance](#section-3-logistics-and-shipping-performance) & [Key Takeaways](#section-3-key-takeaways)
-4. [Product Insights](#section-4-product-insights)  
-5. [Payment Behaviour](#section-5-payment-behaviour)  
+4. [Product Insights](#section-4-product-insights) & [Key Takeaways](#section-4-key-takeaways)
+5. [Payment Behaviour](#section-5-payment-behaviour) & [Key Takeaways](#section-5-key-takeaways)
 6. [Geospatial and Regional Insights](#section-6-geospatial-and-regional-insights)  
 
 ---
@@ -36,7 +36,7 @@ For a full breakdown of the schema and relationships, refer to the [data diction
 
 This section addresses key revenue and performance metrics by exploring the payments, orders, and order_items tables.
 
-**Full SQL script for all Sales Analysis questions can be found [here](.\sql\01_sales_analysis.sql).**
+**Full SQL script for all Sales Analysis questions can be found [here](./sql/01_sales_analysis.sql).**
 
 ---
 
@@ -99,7 +99,7 @@ This variation may reflect regional differences in consumer behavior, purchasing
 
 This section investigates customer distribution, repeat buying behaviour, and high-value customer segmentation to uncover trends that can guide marketing and retention strategies.
 
-**Full SQL script for all Customer Behaviour questions can be found [here](.\sql\02_customer_analysis.sql).**
+**Full SQL script for all Customer Behaviour questions can be found [here](./sql/02_customer_analysis.sql).**
 
 ---
 
@@ -184,7 +184,7 @@ This suggests that even with similar order frequency, high-value customers tend 
 
 This section examines delivery efficiency, regional shipping delays, and how geographic distance impacts delivery timeliness — key for improving operational logistics.
 
-**Full SQL script for all Logistics and Shipping Performance questions can be found [here](.\sql\03_logistics_and_shipping_analysis.sql).**
+**Full SQL script for all Logistics and Shipping Performance questions can be found [here](./sql/03_logistics_and_shipping_analysis.sql).**
 
 ---
 
@@ -248,56 +248,118 @@ Although delays are mostly negative (early arrivals), the trend suggests logisti
 
 - **Deliveries generally arrive earlier than expected:** Across all states, actual delivery dates tend to precede the estimated dates by 8–20 days, especially in remote regions where larger buffers appear built into estimates. Understanding this can improve customer communication and date setting.
 
-- **Shipping distance correlates with delivery timing but not delays:** Longer shipping distances tend to result in larger early delivery margins up to ~1,000–1,200 km, beyond which delivery timing becomes more variable. This suggests room to optimize estimated delivery windows, especially for mid-range distances where most orders occur.
+- **Shipping distance correlates with delivery timing but not delays:** Longer shipping distances tend to result in larger early delivery margins up to ~1,000–1,200 km, beyond which delivery timing becomes more variable. This suggests room to optimise estimated delivery windows, especially for mid-range distances where most orders occur.
 
 ---
-<!--
+
 ## 4. Product Insights
 
 This section explores key product-level dynamics, including return trends, freight costs, and physical product characteristics, to better understand inventory, fulfilment, and shipping drivers.
 
-**Full SQL script for all Product Insights questions can be found [here](.\sql\04_product_analysis.sql).**
+**Full SQL script for all Product Insights questions can be found [here](./sql/04_product_analysis.sql).**
 
 ---
 
 ### Question 12: Which products or categories have the highest return rate (undelivered or cancelled)?
 
 **Insight:**  
-_(To be filled after reviewing query results. Example: Categories such as fashion or electronics may have higher return/cancellation rates, suggesting potential issues with fit, description accuracy, or logistics.)_
+Return rates vary notably across individual products and categories, highlighting potential issues in **customer satisfaction, product fit, or fulfillment reliability**.
 
-**Suggested Visualisations:**  
-Bar charts showing top product categories by return rate  
-Heatmap correlating product types with cancellation/unavailability patterns
+- Among **individual products** with more than 10 orders, several show elevated return rates:
+  - The highest product return rate reaches **18.2%**.
+  - Other products exceed **9%**, though these often have **low order volumes** (around 11–13 orders), which can inflate return rate volatility but also point to persistent issues with small-volume items.
+
+- By **product category** (with 15+ orders), the highest return rates include:
+  - **Kitchen portable and food coach** at **6.67%** — the highest category-level return rate.
+  - Others with elevated returns:
+    - **Blu Ray DVDs** — 3.13%
+    - **Construction Security Tools** — 2.58%
+    - **Hygiene diapers** — 2.56%
+
+- Conversely, **high-volume categories** such as **bed/table/bath**, **pet shop**, and **home appliances** maintain **very low return rates** (below 0.6%), indicating strong alignment between product offering and customer expectations, plus reliable fulfillment.
+
+These trends likely reflect a mix of:
+- **Product fit and expectation gaps**, such as sizing issues or inaccurate descriptions.
+- **Logistics or fulfillment failures** leading to cancellations or undelivered orders.
+- Possible **fraudulent or gaming behavior** concentrated in certain categories.
+
+**Visualisation:**  
+![04_product_return_rate](./visualisations/04_product_return_rate.png)
 
 ---
 
 ### Question 13: Are certain product categories more associated with high freight costs?
 
 **Insight:**  
-_(To be filled after reviewing query results. Example: Furniture and home appliances consistently rank highest in shipping costs, indicating heavier or bulkier stock keeping units.)_
+Freight costs differ markedly by product category, with heavy, bulky, or fragile items incurring the highest average shipping expenses.
 
-**Suggested Visualisations:**  
-Bar chart of categories by average freight cost  
-Bubble chart combining freight cost and order volume per category
+- The **highest average freight costs** are seen in categories that typically include larger or heavier goods:
+  - **PCs** top the list at **R$48.45** per order.
+  - Other costly categories include:
+    - **ELECTRICES 2** — R$44.54 (possibly a data quality issue)
+    - **CITTE AND UPHACK FURNITURE** — R$42.91 (likely a misnamed furniture segment)
+    - **Furniture Kitchen Service Area Dinner and Garden** — R$42.70
+    - Various **furniture office** and **room furniture** categories also feature prominently.
+
+- These categories generally have **moderate to low order volumes**, indicating that the nature and dimensions of products — rather than order frequency — are the primary cost drivers.
+
+- In contrast, **lightweight and fast-moving categories** such as books, electronics, toys, and apparel show much lower average freight costs (often under R$20 per order).  
+  For example, **bed/table/bath** has the highest order volume (11,115 orders) but a comparatively low freight cost of **R$18.42**.
+
+This distinction underscores the need for **tailored shipping strategies**: bulky or fragile goods require special handling and impact margins differently than high-volume, lightweight products.
+
+**Visualisation:**  
+![04_product_cat_avg_freight](./visualisations/04_product_cat_avg_freight.png)
 
 ---
 
 ### Question 14: Which products have the highest weight or dimensional volume?
 
 **Insight:**  
-_(To be filled after reviewing query results. Example: The bulkiest products are concentrated in home and lifestyle categories, affecting logistics and storage needs.)_
+The bulkiest and heaviest products are primarily concentrated in **home, furniture, and lifestyle categories**, which has important implications for logistics, storage, and freight cost management.
 
-**Suggested Visualisations:**  
-Tables of top 10 products by weight and volume  
-Side-by-side bar charts comparing volume and weight distribution by category
+- The **heaviest products** (by weight in grams) include:
+  - A top product in **bed/table/bath** weighing over **40 kg** (40,425 g).
+  - Several products at **30 kg** from categories such as **Health & Beauty**, **Pet Shop**, **Furniture Decoration**, **Construction Tools**, **Furniture Office**, **Housewares**, and **Sport Leisure**.
+  - These weights suggest large, dense items that require careful handling and transportation planning.
+
+- The **largest products** (by dimensional volume in cm³) are dominated by **room furniture** and **housewares**, with volumes close to or exceeding **290,000 cm³** (~0.29 cubic meters):
+  - Multiple products from **Room Furniture** category show volumes around **288,000–294,000 cm³**.
+  - One **Housewares** product leads slightly with **296,208 cm³**.
+  - These volumes highlight the significant space these items occupy, impacting warehousing and shipping logistics.
+
+This distribution reinforces the need to tailor **logistics strategies** based on product size and weight, balancing storage constraints and shipping cost efficiencies, especially for bulky home and furniture goods.
+
+**Visualisations:**
+
+**Top 5 Heaviest Products**
+| Rank | Product ID                         | Category                        | Weight (grams) |
+|-------|----------------------------------|--------------------------------|---------------:|
+| 1     | 26644690fde745fc4654719c3904e1db | bed table bath                 | 40,425        |
+| 2     | dcfeedf441c38e5e7e58ffce194af2bb | HEALTH BEAUTY                 | 30,000        |
+| 3     | 1c57458e824ca3d974ec1831a1a55e72 | pet Shop                      | 30,000        |
+| 4     | f97ad9066c718a6cef93dfcf253d3e0d | Furniture Decoration          | 30,000        |
+| 5     | 363a9f5b97bf194da23858be722a7aa5 | Construction Tools Construction | 30,000      |
+
+
+**Top 5 Largest Products by Dimensional Volume**
+| Rank | Product ID                         | Category           | Volume (cm³)  |
+|-------|----------------------------------|--------------------|--------------:|
+| 1     | 256a9c364b75753b97bee410c9491ad8 | housewares         | 296,208      |
+| 2     | c1e0531cb1864fd3a0cae57dca55ca80 | Room Furniture     | 294,000      |
+| 3     | 0b48eade13cfad433122f23739a66898 | Furniture Decoration | 294,000    |
+| 4     | f227e2d44f10f7dad30fb4dfa839e7a2 | Room Furniture     | 294,000      |
+| 5     | 3eb14e65e4208c6d94b7a32e41add538 | Room Furniture     | 294,000      |
 
 ---
 
 ### Section 4: Key Takeaways
 
-- Return rates vary by product and category — these insights can guide improvements in product descriptions, quality, and expectations.
-- High freight costs tend to align with large or heavy items, influencing pricing strategies and shipping policies.
-- Identifying physically large or heavy products enables smarter warehouse planning and shipping optimisations.
+- **Product returns reveal quality, fit, and fulfillment issues:** Certain categories like **Kitchen portable**, **Blu Ray DVDs**, and **Construction Security Tools** show disproportionately high return rates (up to 6.7%), while high-volume segments like **bed/table/bath** and **pet shop** maintain very low rates (<0.6%). This signals varying levels of customer satisfaction, item suitability, and delivery success.
+
+- **Freight costs are driven by size and fragility, not order volume:** Large and heavy categories such as **PCs**, **Furniture**, and **Room Decor** incur the highest average freight costs (over R$40/order), whereas fast-moving, lightweight items (books, apparel, electronics) enjoy significantly cheaper shipping. Optimising shipping strategies based on category traits can protect margins.
+
+- **Bulky products dominate furniture and home segments:** The heaviest product exceeds **40 kg**, and the largest items exceed **290,000 cm³**, clustered in **Room Furniture** and **Housewares**. These dimensions emphasise the need for efficient warehousing, packaging, and logistics planning — especially for SKUs requiring special handling.
 
 ---
 
@@ -305,56 +367,95 @@ Side-by-side bar charts comparing volume and weight distribution by category
 
 This section examines how customers pay — from preferred methods by geography and segment, to instalment patterns and revenue implications — enabling more tailored payment and financing strategies.
 
-**Full SQL script for all Payment Behaviour questions can be found [here](.\sql\05_payment_analysis.sql).**
+**Full SQL script for all Payment Behaviour questions can be found [here](./sql/05_payment_analysis.sql).**
 
 ---
 
 ### Question 15: What are the most commonly used payment types by state or customer segment?
 
 **Insight:**  
-_(To be filled after reviewing results. Example: Credit cards dominate in most urban states, while boleto bancário is more prevalent in rural regions or among one-time shoppers.)_
+**Credit cards are by far the most dominant payment method across Brazil**, accounting for over 70% of transactions in nearly every state and customer segment. However, regional and behavioral nuances suggest opportunities for more localized payment strategies:
+
+- **Credit card usage** leads in **all states**, typically comprising **68–80%** of payments. It’s especially high in wealthier or more urbanized states like **Rio de Janeiro (76.1%)**, **Amazonas (80.5%)**, and **Pernambuco (77.2%)**.
+- **UPI (instant payment platforms like Pix)** is the clear second choice, making up **15–28%** of transactions, with higher adoption in **less urban or northern states** like **Roraima (28.3%)**, **Amapá (28.6%)**, and **Mato Grosso (24.8%)**.
+- **Vouchers** and **debit cards** remain niche, usually under **8%** combined. However, voucher use is slightly more common in **Bahia**, **Paraná**, and **São Paulo**.
+
+By customer segment:
+- **One-time customers** use credit cards slightly more (**74.0%**) than repeat buyers (**72.7%**), and are marginally more likely to pay with **UPI**.
+- **Repeat customers** show a **higher tendency to use vouchers** (**8.5%**) compared to one-timers (**5.4%**), possibly reflecting **loyalty or promotional targeting**.
+
+These trends suggest:
+- **Credit cards remain the standard across the board**, but UPI is **gaining traction**, especially in **less banked or mobile-first populations**.
+- **Customer retention strategies** could leverage **vouchers or UPI incentives**, especially in regions where these methods are already more common.
+- Merchants may benefit from **optimizing checkout flows and financing options** tailored to these preferences.
 
 **Suggested Visualisations:**  
-Choropleth map of payment type popularity by state  
-Stacked bar chart comparing payment types across segments
+![05_credit_card_upi_share](./visualisations/05_credit_card_upi_share.png)
+![05_payment_method_share](./visualisations/05_payment_method_share.png)
 
 ---
 
 ### Question 16: What is the average instalment plan length for orders by value or category?
 
 **Insight:**  
-_(To be filled after reviewing results. Example: High-value items tend to be split into longer instalment plans, especially in electronics and furniture categories.)_
+Instalment plan lengths increase significantly with order value, and vary notably across product categories:
 
-**Suggested Visualisations:**  
-Grouped bar chart for instalment count vs. order value segment  
-Category-level heatmap of average instalment duration
+- **High-value orders** ($500+) average **6.0 instalments**, compared to just **2.1 instalments** for low-value orders (<$100). This suggests a strong customer preference for financing more expensive purchases.
+- **Mid-range orders** ($100–$499) typically use around **3.7 instalments**, indicating a balanced use of partial payment even for moderate-sized transactions.
+
+By product category:
+- Categories with **higher average instalment lengths** include:
+  - **PCs (6.01)**, **home appliances for baking (5.49)**, and **furniture-related categories** like **room furniture (4.03)** and **house comfort (3.99)**.
+  - These are generally **higher-ticket items** or associated with long-term use and durability.
+- **Shorter instalment plans** (2 or fewer payments) dominate categories like:
+  - **Electronics (1.80)**, **drinks (1.93)**, **books (2.16–2.35)**, and **fashion accessories (2.51)**.
+  - These are typically **lower-value, fast-moving goods**, where customers prefer (or are offered) lump-sum payments.
+
+These findings suggest:
+- Instalment plan offerings should be **tailored by both order value and product category**.
+- **Up-selling higher instalment options** in durable goods (e.g., PCs, furniture, kitchen appliances) could encourage higher-value purchases.
+- For categories with short payment terms, promoting **single-payment discounts** may align well with customer behavior.
+
+**Visualisations:**  
+![05_avg_instalments](./visualisations/05_avg_instalments.png)
 
 ---
 
 ### Question 17: How much revenue is coming from instalment payments vs upfront?
 
 **Insight:**  
-_(To be filled after reviewing results. Example: Instalment payments make up over 60% of revenue, underlining the importance of financing options in customer purchasing behaviour.)_
+Instalment payments generate significantly more revenue than upfront payments:
 
-**Suggested Visualisations:**  
-Pie chart or donut chart of revenue split by payment type  
-Bar chart comparing revenue and volume for each group
+- **Instalment payments** account for approximately **$10.1 million** in revenue from **51,340 payments**
+- **Upfront payments** account for about **$5.9 million** from **52,546 payments**
+
+Although the number of instalment and upfront transactions is nearly equal, the **revenue from instalments is ~71% higher**. This suggests:
+
+- Customers choosing instalment plans tend to make **higher-value purchases**
+- **Financing options play a crucial role in driving revenue**, particularly for more expensive items
+
+This highlights the strategic importance of **offering flexible payment terms**, especially for categories with high-value products or when encouraging larger basket sizes.
+
+**Visualisation:**  
+ ![05_revenue_split](./visualisations/05_revenue_split.png)
 
 ---
 
 ### Section 5: Key Takeaways
 
-- Regional preferences in payment methods can inform localised marketing and checkout flows.
-- Instalment usage scales with order value and product category, offering clues for embedded financing strategies.
-- A significant share of revenue may be tied to instalment-based purchases, making it a critical lever for growth and customer conversion.
+- **Credit cards dominate payments across Brazil,** making up over 70% of transactions in nearly every state, while instant payments (Pix/UPI) are popular in less urbanized northern regions. Customer segments show differences too, with repeat buyers using more vouchers and one-time buyers favoring credit cards and instant payments.
+
+- **Instalment plan lengths increase with order value and vary by category,** with high-value orders averaging around 6 instalments and categories like PCs and furniture having longer plans. Lower-value categories such as electronics and drinks mostly use shorter or single payments.
+
+- **Instalment payments generate significantly more revenue (~$10.1M) than upfront payments (~$5.9M),** despite similar numbers of transactions, highlighting the importance of flexible financing options for higher-value purchases.
 
 ---
-
+<!--
 ## 6. Geospatial and Regional Insights
 
 This section uncovers how geography influences e-commerce performance — including where orders are concentrated and whether rural or urban areas face longer delivery times.
 
-**Full SQL script for all Geospatial and Regional Insights questions can be found [here](.\sql\06_geospatial_and_regional_analysis.sql).**
+**Full SQL script for all Geospatial and Regional Insights questions can be found [here](./sql/06_geospatial_and_regional_analysis.sql).**
 
 ---
 
