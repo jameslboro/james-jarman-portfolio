@@ -2,39 +2,73 @@
 
 This project investigates key performance and operational insights from a Brazilian e-commerce dataset using SQL queries. The goal is to address business-relevant questions by analysing orders, payments, products, customers, and more.
 
----
-
-## Contents
-
-0. [Data Sources](#data-sources)  
-1. [Sales Analysis](#section-1-sales-analysis) & [Key Takeaways](#section-1-key-takeaways)
-2. [Customer Behaviour](#section-2-customer-behaviour) & [Key Takeaways](#section-2-key-takeaways)
-3. [Logistics and Shipping Performance](#section-3-logistics-and-shipping-performance) & [Key Takeaways](#section-3-key-takeaways)
-4. [Product Insights](#section-4-product-insights) & [Key Takeaways](#section-4-key-takeaways)
-5. [Payment Behaviour](#section-5-payment-behaviour) & [Key Takeaways](#section-5-key-takeaways)
-6. [Geospatial and Regional Insights](#section-6-geospatial-and-regional-insights)  
+This report is structured into six key analytical themes, each addressing a set of business questions. The full analysis is supported by SQL scripts, visualisations, and documented insights throughout.
 
 ---
 
-## Data Sources
+## 🧾 Data Sources
 
-All analysis was performed on the `target_ecommerce` schema. The tables used include:
+All analysis was conducted on the `target_ecommerce` schema, which contains transactional, customer, product, and location-level data. The following tables were used:
 
-- `orders`
-- `order_items`
-- `payments`
-- `products`
-- `customers`
-- `sellers`
-- `geolocations`
+- `orders` – master table with order-level information and status
+- `order_items` – product-level breakdowns per order
+- `payments` – payment methods, values, and instalments
+- `products` – product IDs, categories, and dimensions
+- `customers` – customer profiles and location codes
+- `sellers` – seller IDs and locations
+- `geolocations` – latitude/longitude mapping for postal codes
 
-For a full breakdown of the schema and relationships, refer to the [data dictionary](./data_dictionary.md) and the [Entity Relationship Diagram (ERD)](./erd/erd.png).
+For a full breakdown of relationships, see the [data dictionary](./data_dictionary.md) and the [Entity Relationship Diagram (ERD)](./erd/erd.png).
 
 ---
 
-## **Section 1.** Sales Analysis
+## 🛠️ Tools & Technologies Used
 
-This section addresses key revenue and performance metrics by exploring the payments, orders, and order_items tables.
+- **SQL (PostgreSQL)** – for all data querying and transformation tasks
+- **Python (pandas, matplotlib, plotly)** – for data manipulation and visualisation
+- **Jupyter Notebook** – used for producing visualisations
+- **Markdown & Git** – for documentation and version control
+- **Visual Studio Code** – primary development environment
+
+---
+
+## 📑 Contents
+
+| Section | Analysis Topic                            | Key Takeaways                      |
+|---------|--------------------------------------------|------------------------------------|
+| 0       | [Data Sources](#🧾-data-sources)              | –                                  |
+| 1       | [Sales Analysis](#section-1-sales-analysis) | [View](#section-1-key-takeaways)   |
+| 2       | [Customer Behaviour](#section-2-customer-behaviour) | [View](#section-2-key-takeaways)   |
+| 3       | [Logistics and Shipping Performance](#section-3-logistics-and-shipping-performance) | [View](#section-3-key-takeaways) |
+| 4       | [Product Insights](#section-4-product-insights) | [View](#section-4-key-takeaways)   |
+| 5       | [Payment Behaviour](#section-5-payment-behaviour) | [View](#section-5-key-takeaways)   |
+| 6       | [Geospatial and Regional Insights](#section-6-geospatial-and-regional-insights) | [View](#section-6-key-takeaways) |
+| 7       | [Conclusion](#section-7-conclusion) | - |
+
+---
+
+## 📂 Project Structure Overview
+
+- `data/` – raw CSV datasets  
+- `sql/` – analysis scripts by section  
+- `sql/data_validation/` – exploratory data cleaning and integrity checks  
+- `visualisations/` – final PNG charts for report visuals  
+- `notebooks/` – Jupyter Notebook for producing visualisations 
+- `setup/` – schema creation and data loading scripts  
+- `erd/` – entity relationship diagrams  
+- `README.md` – this report  
+
+---
+
+## **Section 1. Sales Analysis**
+
+This section explores key revenue and performance metrics by analysing the `payments`, `orders`, and `order_items` tables.
+
+It addresses the following business questions:
+- What is the total revenue generated per year and per month?
+- Which months show the highest and lowest sales performance?
+- Which product categories generate the most revenue?
+- What is the average order value (AOV) per state?
 
 **Full SQL script for all Sales Analysis questions can be found [here](./sql/01_sales_analysis.sql).**
 
@@ -95,9 +129,25 @@ This variation may reflect regional differences in consumer behavior, purchasing
 
 ---
 
-## **Section 2.** Customer Behaviour
+### Section 1: Key Takeaways
 
-This section investigates customer distribution, repeat buying behaviour, and high-value customer segmentation to uncover trends that can guide marketing and retention strategies.
+- **E-commerce revenue grew year-on-year**, with **R$7.00M generated in 2017** and **R$8.55M in 2018 (partial year)**. Revenue spikes in **November 2017** and **March–May 2018** suggest a response to seasonal promotions or campaigns.
+
+- **A small set of product categories—Health & Beauty, Watches & Presents, and Bed/Table/Bath—account for the majority of revenue**, while most others follow a long-tail distribution. This highlights where marketing and inventory should be prioritised.
+
+- **Average order value (AOV) varies greatly by region**, with **Paraíba (PB)** and **Acre (AC)** exceeding **R$230**, while **São Paulo (SP)** lags at ~**R$136**—a potential signal of diverse customer profiles, price sensitivity, or product mix across states.
+
+---
+
+## **Section 2. Customer Behaviour**
+
+This section explores customer distribution, repeat purchasing behaviour, and high-value customer segments to uncover trends that can inform marketing, loyalty, and retention strategies.
+
+It addresses the following business questions:
+- Which states or cities have the highest number of unique customers?
+- What is the repeat purchase rate of customers?
+- How many customers place multiple orders and how often?
+- Do high-value customers (top 10%) behave differently from others?
 
 **Full SQL script for all Customer Behaviour questions can be found [here](./sql/02_customer_analysis.sql).**
 
@@ -106,14 +156,15 @@ This section investigates customer distribution, repeat buying behaviour, and hi
 ### Question 5: Which states or cities have the highest number of unique customers?
 
 **Insight:**  
-Customer distribution is heavily concentrated in a few key states:
-- **São Paulo (SP)** dominates with **41,746** unique customers, more than three times the next highest state.
-- **Rio de Janeiro (RJ)** and **Minas Gerais (MG)** follow with **12,852** and **11,635** customers respectively.
-- Southern states like **Rio Grande do Sul (RS)**, **Paraná (PR)**, and **Santa Catarina (SC)** also show strong customer bases.
+Customer distribution is concentrated in Brazil’s most populous and economically active regions:
 
-At the city level, **São Paulo city** stands out with **15,540** unique customers — by far the largest urban customer base in the dataset. This reflects the state’s economic weight and population size.
+- **São Paulo (SP)** leads with **41,746** unique customers — more than triple the count of the next state.  
+- **Rio de Janeiro (RJ)** and **Minas Gerais (MG)** follow with **12,852** and **11,635** customers respectively.  
+- Southern states such as **Rio Grande do Sul (RS)**, **Paraná (PR)**, and **Santa Catarina (SC)** also show notable customer presence.
 
-Understanding where customers are most concentrated can help tailor logistics, marketing, and customer support to the highest-demand areas.
+At the city level, **São Paulo city** stands out with **15,540** unique customers — by far the largest urban customer base in the dataset.  
+
+This geographic concentration highlights where to prioritise logistics, customer service, and targeted marketing to maximise reach and efficiency.
 
 **Visualisation:**  
 ![02_unique_customers_by_state](./visualisations/02_unique_customers_by_state.png)
@@ -123,31 +174,31 @@ Understanding where customers are most concentrated can help tailor logistics, m
 ### Question 6: What is the repeat purchase rate of customers?
 
 **Insight:**  
-Only **3.12%** of customers placed more than one order, indicating that the vast majority of shoppers (nearly **97%**) were **one-time buyers**.  
+Repeat purchasing is notably low — just **3.12%** of customers placed more than one order, meaning nearly **97%** were **one-time buyers**.
 
-This low repeat purchase rate suggests:
-- A potential reliance on customer acquisition rather than retention.
-- Opportunity to implement loyalty programs, remarketing campaigns, or subscription models to encourage repeat purchases.
+This indicates:
+- A strong emphasis on **customer acquisition** over retention.  
+- An opportunity to boost performance through **loyalty programmes**, **email remarketing**, or **subscription models**.
 
-Improving retention could lead to more sustainable growth and better customer lifetime value (CLV).
+Increasing the repeat purchase rate could significantly improve customer lifetime value and support long-term revenue growth.
 
 ---
 
 ### Question 7: How many customers place multiple orders and how often?
 
 **Insight:**  
-Out of over **96,000 customers**, only **2,997** placed more than one order, confirming a **low repeat engagement**.  
+Of over **96,000 customers**, only **2,997** placed more than one order, confirming a **low level of repeat engagement**.
 
-Among repeat buyers:
-- The majority (**~91.6%**) placed exactly **2 orders**.
-- A small number placed 3 or more orders:
-  - 203 customers placed 3 orders
-  - 30 placed 4 orders
-  - Just 1 customer placed as many as **17 orders**
+Among those:
+- **~91.6%** placed exactly **2 orders**.  
+- Very few placed more:  
+  - **203** placed 3 orders  
+  - **30** placed 4 orders  
+  - Just **1 customer** placed as many as **17 orders**
 
-This reflects a **long-tail distribution**, where high-frequency buyers are rare.  
+This shows a **long-tail distribution**, where high-frequency shoppers are rare.  
 
-The sharp drop-off after 2–3 orders suggests untapped potential in nurturing existing customers into becoming loyal buyers.
+The sharp drop after 2–3 orders highlights the potential value in **nurturing existing customers** to become more engaged, loyal buyers.
 
 **Visualisation:**  
 ![02_repeat_customers_by_order_count](./visualisations/02_repeat_customers_by_order_count.png)
@@ -157,13 +208,14 @@ The sharp drop-off after 2–3 orders suggests untapped potential in nurturing e
 ### Question 8: Do high-value customers (top 10%) behave differently from others?
 
 **Insight:**  
-Yes, high-value customers exhibit significantly different behaviour compared to the rest:  
-- On average, **high-value customers** placed **~1.12 orders** and spent **R$641.55**,  
-- Whereas **other customers** placed **~1.03 orders** and spent just **R$113.81**.  
+Yes — high-value customers demonstrate markedly different purchasing behaviour:
 
-Although the difference in order count is modest, the difference in **average spending** is substantial—**high-value customers spend over 5.6× more** on average.  
+- On average, **top 10% customers** placed **~1.12 orders** and spent **R$641.55**.  
+- In contrast, **all other customers** placed **~1.03 orders** and spent just **R$113.81**.
 
-This suggests that even with similar order frequency, high-value customers tend to purchase **more expensive items or larger baskets**, making them a key segment for premium offerings, loyalty programs, or early product access.
+Although the difference in order count is relatively small, the **average spend** is over **5.6× higher** among top customers.
+
+This suggests high-value customers tend to purchase **more expensive items** or **larger baskets**, making them ideal candidates for **premium offers**, **exclusive rewards**, or **early access promotions**.
 
 **Visualisation:**  
 ![02_order_count_and_total_spend](./visualisations/02_order_count_and_total_spend.png)
@@ -180,44 +232,47 @@ This suggests that even with similar order frequency, high-value customers tend 
 
 ---
 
-## **Section 3.** Logistics and Shipping Performance
+## **Section 3. Logistics and Shipping Performance**
 
-This section examines delivery efficiency, regional shipping delays, and how geographic distance impacts delivery timeliness — key for improving operational logistics.
+This section analyses delivery efficiency, regional shipping delays, and the impact of geographic distance on delivery timeliness—key considerations for improving logistics operations and customer satisfaction.
+
+It addresses the following business questions:
+- What is the average delivery time across different states?
+- Which regions experience the longest delivery delays?
+- Is there a relationship between shipping distance and delivery delay?
 
 **Full SQL script for all Logistics and Shipping Performance questions can be found [here](./sql/03_logistics_and_shipping_analysis.sql).**
 
 ---
 
-## Question 9: What is the average delivery time across different states?
+### Question 9: What is the average delivery time across different states?
 
 **Insight:**  
-Delivery times vary considerably across Brazil, often reflecting geographic and infrastructure differences:
+Average delivery times vary significantly across Brazil, often reflecting disparities in infrastructure and geographic remoteness:
 
-- **São Paulo (SP)** stands out with the **fastest average delivery time of just 8.76 days**, likely due to its proximity to distribution centers and urban density.  
-- Other southeastern and southern states like **Paraná (PR)**, **Minas Gerais (MG)**, and **Distrito Federal (DF)** follow with delivery times ranging from **~12 to 13 days**.  
-- In contrast, **northern and northeastern states** — such as **Roraima (RR)**, **Amapá (AP)**, and **Amazonas (AM)** — experience much **longer delivery times**, averaging **26 to 29 days**.
+- **São Paulo (SP)** has the **fastest delivery time**, averaging **just 8.76 days**, likely due to dense infrastructure and proximity to distribution centres.  
+- States such as **Paraná (PR)**, **Minas Gerais (MG)**, and **Distrito Federal (DF)** also show relatively **quick deliveries**, averaging **~12–13 days**.  
+- In contrast, **northern and northeastern states** — including **Roraima (RR)**, **Amapá (AP)**, and **Amazonas (AM)** — see **significantly longer delivery times**, averaging **26–29 days**.
 
-This wide spread highlights the **logistical challenges** of reaching remote or less-developed regions, which may require investment in regional distribution hubs or alternative delivery strategies.
+These findings highlight the **logistical challenges** of serving remote regions, and may support initiatives to invest in regional fulfilment centres or alternative last-mile strategies.
 
-**Visualisation:**
-See Question 10 Visualisation.
+**Visualisation:**  
+See Question 10 visualisation.
 
 ---
 
 ### Question 10: Which regions experience the longest delivery delays?
 
 **Insight:**  
-Interestingly, most deliveries across Brazil arrive **before the estimated delivery date**, indicating that the estimated dates are likely conservative.
+Surprisingly, deliveries across all states are **consistently early**, arriving **before the estimated delivery dates** — indicating that these estimates are set conservatively.
 
-- **All states show negative average delays**, meaning early deliveries rather than actual delays.
-- However, the **magnitude of early delivery varies significantly**:
-  - **Acre (AC)**, **Rondônia (RO)**, and **Amapá (AP)** lead with the **earliest deliveries**, arriving **~19–20 days before** the estimated date.
-  - Major population centers like **São Paulo (SP)** and **Rio de Janeiro (RJ)** show more moderate early deliveries (~10–11 days ahead).
-  - States like **Alagoas (AL)** and **Maranhão (MA)** have the **least early delivery margin** (~8 days ahead).
+- Every state shows **negative average delays**, meaning products are delivered earlier than expected.  
+- The extent of early delivery varies:
+  - **Acre (AC)**, **Rondônia (RO)**, and **Amapá (AP)** show the **earliest deliveries**, arriving **~19–20 days ahead** of schedule.  
+  - Urban centres like **São Paulo (SP)** and **Rio de Janeiro (RJ)** show more moderate early arrivals, at **~10–11 days** ahead.  
+  - **Alagoas (AL)** and **Maranhão (MA)** have the **smallest margins**, at around **8 days early**.
 
-This pattern may reflect a **buffer baked into the estimated delivery dates**, especially for remote regions — possibly due to uncertainty in logistics routes.
-
-While not true "delays," these insights help identify where estimated delivery dates might be adjusted for better accuracy and customer expectation management.
+These insights suggest that estimated delivery times include a **buffer**, particularly for remote areas. While not true "delays," understanding these margins can help refine delivery time estimates and better manage customer expectations.
 
 **Visualisation:**  
 ![03_delivery_bar_chart](./visualisations/03_delivery_bar_chart.png)
@@ -227,17 +282,17 @@ While not true "delays," these insights help identify where estimated delivery d
 ### Question 11: Is there a relationship between shipping distance and delivery delay?
 
 **Insight:**  
-Yes — there is a **clear relationship** between shipping distance and delivery delay patterns, though not in the conventional sense of “late” deliveries.
+Yes — a relationship exists between **shipping distance and early delivery margin**, although deliveries remain largely **ahead of schedule** across all distances.
 
-- **Most orders are delivered ahead of schedule**, regardless of distance.  
-- However, the **amount of early delivery tends to increase** with distance, particularly up to **~1,000–1,200 km**.
-- After 2,000 km, early delivery margins fluctuate and become less predictable, with some **outliers** showing actual **late deliveries** (e.g. 1–2 orders beyond 8,000 km).
-- This indicates that **estimated delivery times are set conservatively** across all distances, particularly for long-haul shipments.
+- **Most orders are delivered early**, regardless of distance.  
+- The amount of early delivery **tends to increase with distance**, particularly up to **~1,000–1,200 km**.  
+- Beyond **2,000 km**, patterns become less predictable — with **occasional late deliveries**, especially in extreme cases (e.g. over **8,000 km**).  
+- This suggests that **conservative estimates are applied across all distances**, especially for long-haul deliveries.
 
-Although delays are mostly negative (early arrivals), the trend suggests logistics planners could **optimize delivery promises** more precisely for mid-range distances (500–2,000 km), where most volume occurs.
+These findings indicate an opportunity to **optimise delivery time promises** — particularly for mid-range distances (500–2,000 km), where the majority of orders fall.
 
 **Visualisations:**  
-![03_avg_days_early](./visualisations/03_avg_days_early.png)
+![03_avg_days_early](./visualisations/03_avg_days_early.png)  
 ![03_count_by_distance](./visualisations/03_count_by_distance.png)
 
 ---
@@ -252,9 +307,14 @@ Although delays are mostly negative (early arrivals), the trend suggests logisti
 
 ---
 
-## 4. Product Insights
+## **Section 4. Product Insights**
 
-This section explores key product-level dynamics, including return trends, freight costs, and physical product characteristics, to better understand inventory, fulfilment, and shipping drivers.
+This section explores product-level dynamics—including return trends, freight costs, and physical product attributes—to understand fulfilment challenges and inform inventory, shipping, and warehousing strategies.
+
+It addresses the following business questions:
+- Which products or categories have the highest return rate (undelivered or cancelled)?
+- Are certain product categories more associated with high freight costs?
+- Which products have the highest weight or dimensional volume?
 
 **Full SQL script for all Product Insights questions can be found [here](./sql/04_product_analysis.sql).**
 
@@ -263,25 +323,25 @@ This section explores key product-level dynamics, including return trends, freig
 ### Question 12: Which products or categories have the highest return rate (undelivered or cancelled)?
 
 **Insight:**  
-Return rates vary notably across individual products and categories, highlighting potential issues in **customer satisfaction, product fit, or fulfillment reliability**.
+Return rates vary considerably across both individual products and categories, highlighting potential issues related to **product quality**, **customer expectations**, or **fulfilment reliability**.
 
-- Among **individual products** with more than 10 orders, several show elevated return rates:
-  - The highest product return rate reaches **18.2%**.
-  - Other products exceed **9%**, though these often have **low order volumes** (around 11–13 orders), which can inflate return rate volatility but also point to persistent issues with small-volume items.
+- Among **individual products** (with more than 10 orders), some exhibit elevated return rates:
+  - The highest product return rate is **18.2%**.  
+  - Several others exceed **9%**, although most have **low order volumes** (typically 11–13), which may inflate volatility but also point to persistent issues in niche product lines.
 
-- By **product category** (with 15+ orders), the highest return rates include:
-  - **Kitchen portable and food coach** at **6.67%** — the highest category-level return rate.
-  - Others with elevated returns:
-    - **Blu Ray DVDs** — 3.13%
-    - **Construction Security Tools** — 2.58%
-    - **Hygiene diapers** — 2.56%
+- By **product category** (15+ orders):
+  - **Kitchen Portable and Food Coach** records the highest return rate at **6.67%**.  
+  - Other categories with above-average return rates include:  
+    - **Blu Ray DVDs** — 3.13%  
+    - **Construction Security Tools** — 2.58%  
+    - **Hygiene Diapers** — 2.56%
 
-- Conversely, **high-volume categories** such as **bed/table/bath**, **pet shop**, and **home appliances** maintain **very low return rates** (below 0.6%), indicating strong alignment between product offering and customer expectations, plus reliable fulfillment.
+- In contrast, **high-volume categories** such as **Bed/Table/Bath**, **Pet Shop**, and **Home Appliances** show **very low return rates** (typically below **0.6%**), indicating strong product–market fit and reliable fulfilment processes.
 
-These trends likely reflect a mix of:
-- **Product fit and expectation gaps**, such as sizing issues or inaccurate descriptions.
-- **Logistics or fulfillment failures** leading to cancellations or undelivered orders.
-- Possible **fraudulent or gaming behavior** concentrated in certain categories.
+These trends suggest that elevated return rates may stem from:
+- **Mismatched customer expectations** (e.g. sizing, descriptions)  
+- **Fulfilment issues** or delivery failures  
+- Possibly **fraudulent activity** concentrated in specific categories
 
 **Visualisation:**  
 ![04_product_return_rate](./visualisations/04_product_return_rate.png)
@@ -291,22 +351,22 @@ These trends likely reflect a mix of:
 ### Question 13: Are certain product categories more associated with high freight costs?
 
 **Insight:**  
-Freight costs differ markedly by product category, with heavy, bulky, or fragile items incurring the highest average shipping expenses.
+Freight costs vary widely by category, largely driven by the **weight**, **size**, and **handling complexity** of items.
 
-- The **highest average freight costs** are seen in categories that typically include larger or heavier goods:
-  - **PCs** top the list at **R$48.45** per order.
-  - Other costly categories include:
-    - **ELECTRICES 2** — R$44.54 (possibly a data quality issue)
-    - **CITTE AND UPHACK FURNITURE** — R$42.91 (likely a misnamed furniture segment)
-    - **Furniture Kitchen Service Area Dinner and Garden** — R$42.70
-    - Various **furniture office** and **room furniture** categories also feature prominently.
+- The **highest average freight costs** are linked to categories with bulky or heavy goods:
+  - **PCs** lead with an average cost of **R$48.45** per order.  
+  - Other high-cost categories include:
+    - **ELECTRICES 2** — R$44.54 (likely a data inconsistency)  
+    - **CITTE AND UPHACK FURNITURE** — R$42.91 (likely a mislabelled furniture segment)  
+    - **Furniture Kitchen Service Area Dinner and Garden** — R$42.70  
+    - Several **office and room furniture** categories also feature prominently.
 
-- These categories generally have **moderate to low order volumes**, indicating that the nature and dimensions of products — rather than order frequency — are the primary cost drivers.
+- These categories generally have **moderate to low order volumes**, reinforcing that **product characteristics** (rather than volume) are the main freight cost drivers.
 
-- In contrast, **lightweight and fast-moving categories** such as books, electronics, toys, and apparel show much lower average freight costs (often under R$20 per order).  
-  For example, **bed/table/bath** has the highest order volume (11,115 orders) but a comparatively low freight cost of **R$18.42**.
+- Conversely, categories like **Books**, **Electronics**, **Toys**, and **Apparel** tend to have **lower freight costs** (often below **R$20**), while also accounting for higher sales volume.  
+  For example, **Bed/Table/Bath** has the **highest order count (11,115)** with an average freight cost of just **R$18.42**.
 
-This distinction underscores the need for **tailored shipping strategies**: bulky or fragile goods require special handling and impact margins differently than high-volume, lightweight products.
+These findings underscore the importance of **differentiated shipping strategies**, especially for categories requiring specialised packaging, storage, or delivery services.
 
 **Visualisation:**  
 ![04_product_cat_avg_freight](./visualisations/04_product_cat_avg_freight.png)
@@ -316,40 +376,39 @@ This distinction underscores the need for **tailored shipping strategies**: bulk
 ### Question 14: Which products have the highest weight or dimensional volume?
 
 **Insight:**  
-The bulkiest and heaviest products are primarily concentrated in **home, furniture, and lifestyle categories**, which has important implications for logistics, storage, and freight cost management.
+The largest and heaviest products are primarily concentrated in **homeware, furniture**, and **lifestyle** categories — significantly influencing logistics, warehousing, and delivery costs.
 
-- The **heaviest products** (by weight in grams) include:
-  - A top product in **bed/table/bath** weighing over **40 kg** (40,425 g).
-  - Several products at **30 kg** from categories such as **Health & Beauty**, **Pet Shop**, **Furniture Decoration**, **Construction Tools**, **Furniture Office**, **Housewares**, and **Sport Leisure**.
-  - These weights suggest large, dense items that require careful handling and transportation planning.
+- **Heaviest products** (by weight in grams) include:
+  - A **Bed/Table/Bath** item weighing over **40 kg** (40,425g).  
+  - Several **30 kg** products across categories like **Health & Beauty**, **Pet Shop**, **Furniture**, and **Sport & Leisure**.  
+  - These items require **special handling**, potentially impacting packaging and courier selection.
 
-- The **largest products** (by dimensional volume in cm³) are dominated by **room furniture** and **housewares**, with volumes close to or exceeding **290,000 cm³** (~0.29 cubic meters):
-  - Multiple products from **Room Furniture** category show volumes around **288,000–294,000 cm³**.
-  - One **Housewares** product leads slightly with **296,208 cm³**.
-  - These volumes highlight the significant space these items occupy, impacting warehousing and shipping logistics.
+- **Largest products** (by dimensional volume in cm³) are typically found in:
+  - **Room Furniture** and **Housewares**, with items measuring up to **296,208 cm³** (~0.3 cubic metres).  
+  - Multiple Room Furniture products cluster in the **288,000–294,000 cm³** range.  
+  - These dimensions suggest significant implications for **storage planning** and **freight capacity**.
 
-This distribution reinforces the need to tailor **logistics strategies** based on product size and weight, balancing storage constraints and shipping cost efficiencies, especially for bulky home and furniture goods.
+Tailoring logistics operations to account for product weight and volume is essential to control costs and ensure delivery efficiency for large-format or high-density goods.
 
 **Visualisations:**
 
 **Top 5 Heaviest Products**
-| Rank | Product ID                         | Category                        | Weight (grams) |
-|-------|----------------------------------|--------------------------------|---------------:|
-| 1     | 26644690fde745fc4654719c3904e1db | bed table bath                 | 40,425        |
-| 2     | dcfeedf441c38e5e7e58ffce194af2bb | HEALTH BEAUTY                 | 30,000        |
-| 3     | 1c57458e824ca3d974ec1831a1a55e72 | pet Shop                      | 30,000        |
-| 4     | f97ad9066c718a6cef93dfcf253d3e0d | Furniture Decoration          | 30,000        |
-| 5     | 363a9f5b97bf194da23858be722a7aa5 | Construction Tools Construction | 30,000      |
-
+| Rank | Product ID                         | Category                         | Weight (grams) |
+|------:|----------------------------------|----------------------------------|----------------:|
+| 1    | 26644690fde745fc4654719c3904e1db | Bed/Table/Bath                   | 40,425          |
+| 2    | dcfeedf441c38e5e7e58ffce194af2bb | Health & Beauty                  | 30,000          |
+| 3    | 1c57458e824ca3d974ec1831a1a55e72 | Pet Shop                         | 30,000          |
+| 4    | f97ad9066c718a6cef93dfcf253d3e0d | Furniture Decoration             | 30,000          |
+| 5    | 363a9f5b97bf194da23858be722a7aa5 | Construction Tools (Construction) | 30,000        |
 
 **Top 5 Largest Products by Dimensional Volume**
-| Rank | Product ID                         | Category           | Volume (cm³)  |
-|-------|----------------------------------|--------------------|--------------:|
-| 1     | 256a9c364b75753b97bee410c9491ad8 | housewares         | 296,208      |
-| 2     | c1e0531cb1864fd3a0cae57dca55ca80 | Room Furniture     | 294,000      |
-| 3     | 0b48eade13cfad433122f23739a66898 | Furniture Decoration | 294,000    |
-| 4     | f227e2d44f10f7dad30fb4dfa839e7a2 | Room Furniture     | 294,000      |
-| 5     | 3eb14e65e4208c6d94b7a32e41add538 | Room Furniture     | 294,000      |
+| Rank | Product ID                         | Category            | Volume (cm³)  |
+|------:|----------------------------------|---------------------|---------------:|
+| 1    | 256a9c364b75753b97bee410c9491ad8 | Housewares          | 296,208        |
+| 2    | c1e0531cb1864fd3a0cae57dca55ca80 | Room Furniture      | 294,000        |
+| 3    | 0b48eade13cfad433122f23739a66898 | Furniture Decoration| 294,000        |
+| 4    | f227e2d44f10f7dad30fb4dfa839e7a2 | Room Furniture      | 294,000        |
+| 5    | 3eb14e65e4208c6d94b7a32e41add538 | Room Furniture      | 294,000        |
 
 ---
 
@@ -363,9 +422,14 @@ This distribution reinforces the need to tailor **logistics strategies** based o
 
 ---
 
-## 5. Payment Behaviour
+## **Section 5. Payment Behaviour**
 
-This section examines how customers pay — from preferred methods by geography and segment, to instalment patterns and revenue implications — enabling more tailored payment and financing strategies.
+This section explores how customers choose to pay—including regional preferences, segment differences, and the role of instalment plans—to inform more tailored and effective payment strategies.
+
+It addresses the following business questions:
+- What are the most commonly used payment types by state or customer segment?
+- What is the average instalment plan length for orders by value or category?
+- How much revenue is coming from instalment payments vs upfront?
 
 **Full SQL script for all Payment Behaviour questions can be found [here](./sql/05_payment_analysis.sql).**
 
@@ -374,23 +438,20 @@ This section examines how customers pay — from preferred methods by geography 
 ### Question 15: What are the most commonly used payment types by state or customer segment?
 
 **Insight:**  
-**Credit cards are by far the most dominant payment method across Brazil**, accounting for over 70% of transactions in nearly every state and customer segment. However, regional and behavioral nuances suggest opportunities for more localized payment strategies:
+**Credit cards are the overwhelmingly preferred payment method nationwide**, accounting for over 70% of transactions in nearly every state and customer group. However, regional and behavioural nuances reveal opportunities for more tailored approaches:
 
-- **Credit card usage** leads in **all states**, typically comprising **68–80%** of payments. It’s especially high in wealthier or more urbanized states like **Rio de Janeiro (76.1%)**, **Amazonas (80.5%)**, and **Pernambuco (77.2%)**.
-- **UPI (instant payment platforms like Pix)** is the clear second choice, making up **15–28%** of transactions, with higher adoption in **less urban or northern states** like **Roraima (28.3%)**, **Amapá (28.6%)**, and **Mato Grosso (24.8%)**.
-- **Vouchers** and **debit cards** remain niche, usually under **8%** combined. However, voucher use is slightly more common in **Bahia**, **Paraná**, and **São Paulo**.
+- **Credit card usage** dominates across all states, typically making up **68–80%** of transactions. Usage is highest in wealthier or more urban states such as **Rio de Janeiro (76.1%)**, **Amazonas (80.5%)**, and **Pernambuco (77.2%)**.  
+- **UPI-style payments (e.g., Pix)** rank second overall, with uptake ranging from **15–28%**, especially in **less urban or northern states** like **Roraima (28.3%)**, **Amapá (28.6%)**, and **Mato Grosso (24.8%)**.  
+- **Vouchers** and **debit cards** remain niche methods, usually comprising less than **8%** combined, though voucher use is slightly more common in **Bahia**, **Paraná**, and **São Paulo**.
 
-By customer segment:
-- **One-time customers** use credit cards slightly more (**74.0%**) than repeat buyers (**72.7%**), and are marginally more likely to pay with **UPI**.
-- **Repeat customers** show a **higher tendency to use vouchers** (**8.5%**) compared to one-timers (**5.4%**), possibly reflecting **loyalty or promotional targeting**.
+By customer type:
+- **One-time customers** favour credit cards slightly more (**74.0%**) than repeat buyers (**72.7%**), and are marginally more inclined to use **UPI**.  
+- **Repeat customers** show a **higher propensity for vouchers** (**8.5%**) compared to one-time buyers (**5.4%**), possibly reflecting loyalty programme usage or targeted promotions.
 
-These trends suggest:
-- **Credit cards remain the standard across the board**, but UPI is **gaining traction**, especially in **less banked or mobile-first populations**.
-- **Customer retention strategies** could leverage **vouchers or UPI incentives**, especially in regions where these methods are already more common.
-- Merchants may benefit from **optimizing checkout flows and financing options** tailored to these preferences.
+These patterns suggest that while **credit cards remain the norm**, UPI is gaining ground — particularly in **mobile-first or less banked regions** — and voucher schemes may play a role in **customer retention strategies**.
 
-**Suggested Visualisations:**  
-![05_credit_card_upi_share](./visualisations/05_credit_card_upi_share.png)
+**Visualisations:**  
+![05_credit_card_upi_share](./visualisations/05_credit_card_upi_share.png)  
 ![05_payment_method_share](./visualisations/05_payment_method_share.png)
 
 ---
@@ -398,25 +459,28 @@ These trends suggest:
 ### Question 16: What is the average instalment plan length for orders by value or category?
 
 **Insight:**  
-Instalment plan lengths increase significantly with order value, and vary notably across product categories:
+Instalment plan length increases noticeably with order value and varies across product types:
 
-- **High-value orders** ($500+) average **6.0 instalments**, compared to just **2.1 instalments** for low-value orders (<$100). This suggests a strong customer preference for financing more expensive purchases.
-- **Mid-range orders** ($100–$499) typically use around **3.7 instalments**, indicating a balanced use of partial payment even for moderate-sized transactions.
+- **High-value orders** (R$500+) average around **6.0 instalments**, compared to just **2.1 instalments** for orders under R$100.  
+- **Mid-range purchases** (R$100–R$499) typically involve around **3.7 instalments**, indicating widespread use of partial payments even for moderately priced goods.
 
 By product category:
-- Categories with **higher average instalment lengths** include:
-  - **PCs (6.01)**, **home appliances for baking (5.49)**, and **furniture-related categories** like **room furniture (4.03)** and **house comfort (3.99)**.
-  - These are generally **higher-ticket items** or associated with long-term use and durability.
-- **Shorter instalment plans** (2 or fewer payments) dominate categories like:
-  - **Electronics (1.80)**, **drinks (1.93)**, **books (2.16–2.35)**, and **fashion accessories (2.51)**.
-  - These are typically **lower-value, fast-moving goods**, where customers prefer (or are offered) lump-sum payments.
+- Longer instalment plans are seen in categories such as:
+  - **PCs (6.01)**  
+  - **Baking appliances (5.49)**  
+  - **Room furniture (4.03)**  
+  - **Home comfort products (3.99)**  
+  These are generally **higher-cost, durable items**.
 
-These findings suggest:
-- Instalment plan offerings should be **tailored by both order value and product category**.
-- **Up-selling higher instalment options** in durable goods (e.g., PCs, furniture, kitchen appliances) could encourage higher-value purchases.
-- For categories with short payment terms, promoting **single-payment discounts** may align well with customer behavior.
+- Shorter plans (2 instalments or fewer) dominate in fast-moving or lower-value goods, such as:
+  - **Electronics (1.80)**  
+  - **Drinks (1.93)**  
+  - **Books (2.16–2.35)**  
+  - **Fashion accessories (2.51)**
 
-**Visualisations:**  
+These trends suggest that **instalment plans should be tailored by order value and product category**. Encouraging longer-term payments in high-ticket categories may drive higher-value purchases, while **discounts for upfront payment** could resonate better in lower-value segments.
+
+**Visualisation:**  
 ![05_avg_instalments](./visualisations/05_avg_instalments.png)
 
 ---
@@ -424,20 +488,17 @@ These findings suggest:
 ### Question 17: How much revenue is coming from instalment payments vs upfront?
 
 **Insight:**  
-Instalment payments generate significantly more revenue than upfront payments:
+Instalment payments generate **significantly higher revenue** than upfront payments, despite similar transaction volumes:
 
-- **Instalment payments** account for approximately **$10.1 million** in revenue from **51,340 payments**
-- **Upfront payments** account for about **$5.9 million** from **52,546 payments**
+- **Instalment payments** contributed approximately **R$10.1 million** from **51,340 transactions**.  
+- **Upfront payments** totalled around **R$5.9 million** from **52,546 transactions**.
 
-Although the number of instalment and upfront transactions is nearly equal, the **revenue from instalments is ~71% higher**. This suggests:
+While the number of transactions is almost identical, the **revenue from instalments is roughly 71% higher**. This indicates that customers opting for instalments are more likely to make **higher-value purchases**.
 
-- Customers choosing instalment plans tend to make **higher-value purchases**
-- **Financing options play a crucial role in driving revenue**, particularly for more expensive items
-
-This highlights the strategic importance of **offering flexible payment terms**, especially for categories with high-value products or when encouraging larger basket sizes.
+These findings underscore the importance of offering **flexible financing options**, especially for higher-priced items. Doing so can directly impact overall revenue and average basket size.
 
 **Visualisation:**  
- ![05_revenue_split](./visualisations/05_revenue_split.png)
+![05_revenue_split](./visualisations/05_revenue_split.png)
 
 ---
 
@@ -451,9 +512,13 @@ This highlights the strategic importance of **offering flexible payment terms**,
 
 ---
 
-## 6. Geospatial and Regional Insights
+## **Section 6. Geospatial and Regional Insights**
 
-This section uncovers how geography influences e-commerce performance — including where orders are concentrated and whether rural or urban areas face longer delivery times.
+This section uncovers how geography influences e-commerce performance—including where orders are concentrated and whether rural or urban areas experience longer delivery times.
+
+It addresses the following business questions:
+- What is the distribution of orders across Brazilian states?
+- Do rural or urban areas tend to have longer delivery times?
 
 **Full SQL script for all Geospatial and Regional Insights questions can be found [here](./sql/06_geospatial_and_regional_analysis.sql).**
 
@@ -462,14 +527,15 @@ This section uncovers how geography influences e-commerce performance — includ
 ### Question 18: What is the distribution of orders across Brazilian states?
 
 **Insight:**  
-Order volume is highly concentrated in the south-eastern states, closely mirroring Brazil’s population and economic hubs:
-- **São Paulo (SP)** leads by a wide margin with **41,746 orders**, representing **42%** of total volume.
-- **Rio de Janeiro (RJ)** and **Minas Gerais (MG)** follow with **12.9%** and **11.7%** of orders respectively.
-- Southern states like **Rio Grande do Sul (RS)**, **Paraná (PR)**, and **Santa Catarina (SC)** also contribute significantly, collectively accounting for over **14%** of orders.
+Order volume is heavily concentrated in the south-eastern states, reflecting Brazil’s key population centres and economic hubs:
 
-Lower-order volume is seen in northern and northeastern regions, such as **Amazonas (AM)**, **Acre (AC)**, and **Roraima (RR)**, each contributing **less than 0.2%**. This reflects disparities in digital infrastructure, economic activity, and e-commerce access across Brazil.
+- **São Paulo (SP)** leads by a wide margin with **41,746 orders**, representing **42%** of the total volume.  
+- **Rio de Janeiro (RJ)** and **Minas Gerais (MG)** follow with **12.9%** and **11.7%** of orders respectively.  
+- Southern states such as **Rio Grande do Sul (RS)**, **Paraná (PR)**, and **Santa Catarina (SC)** also contribute significantly, collectively accounting for over **14%** of orders.
 
-Understanding this regional distribution can support logistics planning, inventory allocation, and marketing strategies based on local demand.
+Lower order volumes appear in northern and northeastern regions, including **Amazonas (AM)**, **Acre (AC)**, and **Roraima (RR)**, each contributing **less than 0.2%**. This disparity likely reflects differences in digital infrastructure, economic activity, and e-commerce access across Brazil.
+
+Understanding this regional distribution supports more effective logistics planning, inventory allocation, and targeted marketing aligned with local demand.
 
 **Visualisation:**  
 ![06_order_volume_by_state](./visualisations/06_order_volume_by_state.png)
@@ -479,12 +545,13 @@ Understanding this regional distribution can support logistics planning, invento
 ### Question 19: Do rural or urban areas tend to have longer delivery times?
 
 **Insight:**  
-Rural areas consistently experience longer delivery times than urban areas, likely due to logistics challenges and geographic remoteness:
-- **Rural customers wait an average of 14.0 days** for delivery — about **1.6 days longer** than urban customers.
-- **Urban deliveries average 12.4 days**, benefiting from higher logistics density and proximity to distribution hubs.
-- While rural orders represent only **~10%** of total deliveries, their extended timelines may impact customer satisfaction and repeat purchase rates in these regions.
+Rural areas consistently face longer delivery times than urban areas, likely due to logistical challenges and geographic remoteness:
 
-These findings highlight the importance of **logistics planning and regional service optimisation**, especially for expanding reach into rural markets.
+- **Rural customers wait an average of 14.0 days** for delivery — approximately **1.6 days longer** than urban customers.  
+- **Urban deliveries average 12.4 days**, benefiting from greater logistics density and proximity to distribution centres.  
+- Although rural orders represent only around **10%** of total deliveries, these extended delivery times could negatively impact customer satisfaction and repeat purchase behaviour in rural markets.
+
+These findings highlight the need for **logistics optimisation** and regional service improvements, particularly to support growth in rural areas.
 
 **Visualisation:**  
 ![06_delivery_time_urban_vs_rural](./visualisations/06_delivery_time_urban_vs_rural.png)
@@ -501,65 +568,28 @@ These findings highlight the importance of **logistics planning and regional ser
 
 ---
 
-## Exploratory: Revenue Discrepancy Checks
+## 🧠 Key Skills Demonstrated
 
-To validate consistency across tables (`payments` vs. `order_items`), multiple revenue calculations were compared.
+- Translating complex data into actionable insights  
+- Writing clean and efficient SQL for relational analysis  
+- Designing professional, insight-driven data visualisations  
+- Structuring analysis reports for both technical and business audiences  
+- Performing data validation and reconciling multi-source inconsistencies  
 
-### Findings
-Revenue calculations using the `payments` table were consistently higher than those using the `order_items` table:
 
-| Year | Revenue (Payments) | Revenue (Order Items) | Difference |
-|------|---------------------|------------------------|------------|
-| 2016 | R$47,969.31         | R$47,958.99            | +R$10.32   |
-| 2017 | R$7,001,143.26      | R$6,999,771.36         | +R$1,371.90|
-| 2018 | R$8,550,563.16      | R$8,549,172.74         | +R$1,390.42|
+## **Section 7. Conclusion**
 
-These discrepancies persisted even after cleaning the dataset to include only orders with valid matches across `orders`, `payments`, and `order_items`.
+This analysis offers a comprehensive view of Brazil’s e-commerce landscape, uncovering actionable insights across customer behaviour, logistics, payments, and product performance.
 
-> Despite aligning on order status and filtering for completeness, `payments` and `order_items` produced different total revenues. Given the nature of the `payments` table as the financial source of truth, it was chosen as the authoritative revenue reference for this section.
+**Key takeaways include:**
+- **Customer loyalty remains a challenge**, with nearly 97% of users purchasing only once. However, the top 10% of customers contribute disproportionately to revenue—suggesting a strong case for targeted retention initiatives.
+- **Geographic disparities are significant**: São Paulo dominates both sales and customer base, while northern and rural regions experience longer delivery times—highlighting opportunities for regional logistics optimisation.
+- **Product returns and freight costs vary widely**, often tied to category, weight, or volume. Tailoring fulfilment strategies by product type could drive down operational inefficiencies.
+- **Flexible payment options matter**: Instalment plans not only correlate with higher average purchase values, but also account for a larger share of total revenue—emphasising their strategic value in boosting order size.
 
----
+Looking ahead, this project could be extended by:
+- Integrating external data such as marketing spend, seasonality, or web traffic sources  
+- Building automated dashboards for near real-time monitoring  
+- Applying clustering or predictive modelling to identify high-risk returns or high-value customer traits  
 
-### Data Consistency Checks
-
-Performed validation across key tables to identify:
-
-- **Orders without payments:**  
-  One order (`bfbd0f9bdef84302105ad712db648a6c`) was found with valid order items and a `delivered` status but no payment record.
-
-- **Orders without order items:**  
-  775 orders lacked entries in the `order_items` table. These spanned statuses such as:
-  - `canceled`
-  - `created`
-  - `invoiced`
-  - `shipped`
-  - `unavailable`
-
-- **Inconsistent data points:**
-  - `orders`: 99,441  
-  - `payments`: 99,440  
-  - `order_items`: 98,666  
-
-These inconsistencies are relatively low in volume but significant enough to affect aggregate revenue totals.
-
----
-
-### Cleaned Revenue Calculations
-
-Used a CTE to filter only valid, fully matched orders across all relevant tables and re-ran revenue calculations:
-
-| Year | Cleaned Revenue (Payments) | Cleaned Revenue (Order Items) | Difference |
-|------|-----------------------------|-------------------------------|------------|
-| 2016 | R$47,891.58                 | R$47,815.53                   | +R$76.05   |
-| 2017 | R$7,001,143.26              | R$6,999,771.36                | +R$1,371.90|
-| 2018 | R$8,550,563.16              | R$8,549,172.74                | +R$1,390.42|
-
-### Insight
-
-Although revenue alignment improved with cleaned joins, discrepancies still remained. The persistent gaps reinforced the choice to use the `payments` table as the revenue source of truth due to its completeness, consistency, and financial integrity.
-
----
-
-## Conclusion
-
-The `payments` table was adopted as the source of truth for all revenue and AOV-related metrics due to more consistent alignment and financial relevance. Minor anomalies in order data highlighted the importance of careful joins and validation across relational tables during analysis.
+The full analytical journey—from SQL scripting to curated visualisations—is designed not only to extract insights, but to support decision-making with clarity and intent.
