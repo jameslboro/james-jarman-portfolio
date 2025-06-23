@@ -8,15 +8,17 @@ Whether you are a recruiter, hiring manager, or fellow data enthusiast, thank yo
 
 ## Projects
 
-### 1. [Project – Bank Transactions](https://github.com/jameslboro/james-jarman-portfolio/tree/main/project-Bank-Transactions) *(In Progress)*  
-**Tools:** Python, Pandas, Seaborn, Plotly, Jupyter Notebooks  
-**Dataset:** Kaggle – [Bank Transaction Dataset for Fraud Detection](https://www.kaggle.com/datasets/valakhorasani/bank-transaction-dataset-for-fraud-detection)
+### 1. [Target E-Commerce in Brazil](https://github.com/jameslboro/james-jarman-portfolio/tree/main/project-eCommerce-Target) *(Jun 2025)*
 
-This project explores customer banking transactions to identify trends and behaviours. It includes thorough exploratory data analysis (EDA), feature exploration, and insightful visualisations. Currently being written up for conclusions and presentation.
+**Tools:** PostgreSQL, Python (Pandas, Matplotlib, Plotly), Jupyter Notebooks  
+**Dataset:** Kaggle – [e-Commerce (Target) Sales Dataset](https://www.kaggle.com/datasets/devarajv88/target-dataset/)
+
+This end-to-end SQL analytics case study explores 99,000+ orders placed across Brazil between 2016 and 2018. The analysis uncovers trends in sales performance, customer behaviour, payment strategy, product returns, and logistics operations. The project includes entity modelling, feature engineering, curated visualisations, and a comprehensive insight-driven README, aimed at transforming raw transactional data into actionable business recommendations.
 
 ---
 
-### 2. [Project – US Candy Distributor](https://github.com/jameslboro/james-jarman-portfolio/tree/main/project-US-Candy-Distributor)
+### 2. [Project – US Candy Distributor](https://github.com/jameslboro/james-jarman-portfolio/tree/main/project-US-Candy-Distributor) *(Apr-May 2025)*
+
 **Tools:** SQL (T-SQL), Microsoft SQL Server, Power BI  
 **Dataset:** Maven Analytics – [US Candy Distributor](https://mavenanalytics.io/data-playground?order=date_added%2Cdesc&search=US%20Candy%20Distributor)
 
@@ -24,18 +26,28 @@ This project simulates operations for a fictional US-based candy distributor. Th
 
 ---
 
-### 3. [Project – Air Quality Analysis](https://github.com/jameslboro/james-jarman-portfolio/tree/main/project-Air-Quality) *(In Progress)*  
+### 3. [Project – Bank Transactions](https://github.com/jameslboro/james-jarman-portfolio/tree/main/project-Bank-Transactions) *(In Progress – Started May 2025)*
+
+**Tools:** Python, Pandas, Seaborn, Plotly, Jupyter Notebooks  
+**Dataset:** Kaggle – [Bank Transaction Dataset for Fraud Detection](https://www.kaggle.com/datasets/valakhorasani/bank-transaction-dataset-for-fraud-detection)
+
+This project explores customer banking transactions to identify trends and behaviours. It includes thorough exploratory data analysis (EDA), feature exploration, and insightful visualisations. Currently being written up for conclusions and presentation.
+<!-- 
+---
+
+### 4. [Project – Air Quality Analysis](https://github.com/jameslboro/james-jarman-portfolio/tree/main/project-Air-Quality) *(In Progress - )*
+
 **Tools:** Python, Pandas, Matplotlib, Seaborn  
 **Dataset:** Kaggle – [Global Air Quality Dataset](https://www.kaggle.com/datasets/waqi786/global-air-quality-dataset/)
 
-An early-stage project analysing environmental data. Initial cleaning and visualisations are complete, with further analysis, correlation investigation, and potential predictive modelling to follow.
+An early-stage project analysing environmental data. Initial cleaning and visualisations are complete, with further analysis, correlation investigation, and potential predictive modelling to follow. -->
 
 ---
 
 ## Tools & Technologies
 
-- **Programming:** Python (Pandas, NumPy, Matplotlib, Seaborn, Plotly), SQL (T-SQL, MSMSS), MATLAB  
-- **Data Tools:** Jupyter Notebooks, Power BI, Excel (Power Query, PivotTables)  
+- **Programming:** Python (Pandas, NumPy, Matplotlib, Seaborn, Plotly), SQL (T-SQL, PostgreSQL), MATLAB  
+- **Data Tools:** Jupyter Notebooks, Power BI, Excel (Power Query), Git & Markdown    
 - **Core Skills:** Data Cleaning, Exploratory Data Analysis, Data Visualisation, Dashboard Creation, Statistical Insight Extraction
 
 ---
@@ -60,8 +72,7 @@ My previous work experience in the property sector allowed me to apply data-driv
 
 ## Future Plans
 
-- Complete current project write-ups and visualisations  
-- Add version-controlled notebooks with clear Markdown summaries  
-- Explore machine learning and time series analysis  
+- Continue adding polished project documentation with reproducible SQL and markdown commentary  
+- Expand portfolio to include predictive modelling and time series forecasting    
 
 Thanks for checking out my work. Please do not hesitate to get in touch if you have any questions, feedback, or opportunities.
