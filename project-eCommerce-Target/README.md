@@ -77,6 +77,7 @@ It addresses the following business questions:
 ### Question 1: What is the total revenue generated per year and per month?
 
 **Insight:**  
+
 Revenue increased significantly from 2016 to 2018; however, it is important to note that the data only covers **3 months of 2016** and **the first 9 months of 2018**, making **2017 and 2018 the most complete and comparable years**.  
 
 - In **2017**, the platform generated approximately **R$7.00 million** in revenue.  
@@ -85,6 +86,7 @@ Revenue increased significantly from 2016 to 2018; however, it is important to n
 - Notable spikes in revenue occurred in **November 2017** and **March–May 2018**, possibly due to seasonal promotions or campaigns.
 
 **Visualisation:**  
+
 ![01_monthly_revenue_trend](./visualisations/01_monthly_revenue_trend.png)
 
 ---
@@ -92,15 +94,19 @@ Revenue increased significantly from 2016 to 2018; however, it is important to n
 ### Question 2: Which months show the highest and lowest sales performance?
 
 **Insight:**  
+
 The month with the highest sales performance was **November 2017**, generating approximately **R$1.16 million** in revenue, likely reflecting major seasonal promotions or holiday sales.  
-The lowest sales month was **December 2016**, with just **R$19.62** in revenue, which aligns with the limited data coverage for 2016 and suggests incomplete or minimal sales activity during that period.  
+
+The lowest sales month was **December 2016**, with just **R$19.62** in revenue, which aligns with the limited data coverage for 2016 and suggests incomplete or minimal sales activity during that period.
+
 These extremes highlight the importance of considering data coverage when interpreting monthly performance trends.
 
 ---
 
 ### Question 3: Which product categories generate the most revenue?
 
-**Insight:**  
+**Insight:**
+
 The top product categories by revenue highlight key drivers of sales on the platform:  
 - **Health & Beauty** leads with approximately **R$1.43 million**, indicating strong consumer demand in personal care.  
 - **Watches & Presents** and **Bed, Table & Bath** categories follow closely, each generating over **R$1.2 million** in revenue.  
@@ -109,7 +115,8 @@ The top product categories by revenue highlight key drivers of sales on the plat
 
 This distribution suggests focusing marketing and inventory efforts on the top categories could maximise revenue, while also exploring growth potential in mid-tier categories.
 
-**Visualisation:**  
+**Visualisation:**
+
 ![01_revenue_by_top20_product_categories](./visualisations/01_revenue_by_top20_product_categories.png)
 
 ---
@@ -117,14 +124,16 @@ This distribution suggests focusing marketing and inventory efforts on the top c
 ### Question 4: What is the average order value (AOV) per state?
 
 **Insight:**  
+
 The average order value varies significantly across states:  
 - States like **Paraíba (PB)**, **Acre (AC)**, and **Amapá (AP)** top the list with AOVs above **R$230**, indicating higher spending per order in these regions.  
 - The majority of other states fall in the **R$150–R$220** range, showing moderate average spending.  
-- Notably, **São Paulo (SP)**, despite being a major economic hub, has a relatively lower AOV (~**R$136**), which could be influenced by a larger volume of smaller orders or diverse customer segments.  
+- Notably, **São Paulo (SP)**, despite being a major economic hub, has a relatively lower AOV (~**R$136**), which could be influenced by a larger volume of smaller orders or diverse customer segments.
 
 This variation may reflect regional differences in consumer behavior, purchasing power, or product preferences. It could inform targeted marketing strategies or tailored promotions by state.
 
-**Visualisation:**  
+**Visualisation:**
+
 ![01_average_order_value](./visualisations/01_average_order_value.png)
 
 ---
@@ -155,7 +164,8 @@ It addresses the following business questions:
 
 ### Question 5: Which states or cities have the highest number of unique customers?
 
-**Insight:**  
+**Insight:**
+
 Customer distribution is concentrated in Brazil’s most populous and economically active regions:
 
 - **São Paulo (SP)** leads with **41,746** unique customers — more than triple the count of the next state.  
@@ -166,14 +176,16 @@ At the city level, **São Paulo city** stands out with **15,540** unique custome
 
 This geographic concentration highlights where to prioritise logistics, customer service, and targeted marketing to maximise reach and efficiency.
 
-**Visualisation:**  
+**Visualisation:**
+
 ![02_unique_customers_by_state](./visualisations/02_unique_customers_by_state.png)
 
 ---
 
 ### Question 6: What is the repeat purchase rate of customers?
 
-**Insight:**  
+**Insight:**
+
 Repeat purchasing is notably low — just **3.12%** of customers placed more than one order, meaning nearly **97%** were **one-time buyers**.
 
 This indicates:
@@ -186,7 +198,8 @@ Increasing the repeat purchase rate could significantly improve customer lifetim
 
 ### Question 7: How many customers place multiple orders and how often?
 
-**Insight:**  
+**Insight:**
+
 Of over **96,000 customers**, only **2,997** placed more than one order, confirming a **low level of repeat engagement**.
 
 Among those:
@@ -200,14 +213,16 @@ This shows a **long-tail distribution**, where high-frequency shoppers are rare.
 
 The sharp drop after 2–3 orders highlights the potential value in **nurturing existing customers** to become more engaged, loyal buyers.
 
-**Visualisation:**  
+**Visualisation:**
+
 ![02_repeat_customers_by_order_count](./visualisations/02_repeat_customers_by_order_count.png)
 
 ---
 
 ### Question 8: Do high-value customers (top 10%) behave differently from others?
 
-**Insight:**  
+**Insight:**
+
 Yes — high-value customers demonstrate markedly different purchasing behaviour:
 
 - On average, **top 10% customers** placed **~1.12 orders** and spent **R$641.55**.  
@@ -217,7 +232,8 @@ Although the difference in order count is relatively small, the **average spend*
 
 This suggests high-value customers tend to purchase **more expensive items** or **larger baskets**, making them ideal candidates for **premium offers**, **exclusive rewards**, or **early access promotions**.
 
-**Visualisation:**  
+**Visualisation:**
+
 ![02_order_count_and_total_spend](./visualisations/02_order_count_and_total_spend.png)
 
 ---
