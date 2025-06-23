@@ -450,7 +450,7 @@ This highlights the strategic importance of **offering flexible payment terms**,
 - **Instalment payments generate significantly more revenue (~$10.1M) than upfront payments (~$5.9M),** despite similar numbers of transactions, highlighting the importance of flexible financing options for higher-value purchases.
 
 ---
-<!--
+
 ## 6. Geospatial and Regional Insights
 
 This section uncovers how geography influences e-commerce performance — including where orders are concentrated and whether rural or urban areas face longer delivery times.
@@ -462,32 +462,43 @@ This section uncovers how geography influences e-commerce performance — includ
 ### Question 18: What is the distribution of orders across Brazilian states?
 
 **Insight:**  
-_(To be filled after reviewing results. Example: The majority of orders come from south-eastern states like São Paulo and Rio de Janeiro, aligning with population and urbanisation patterns.)_
+Order volume is highly concentrated in the south-eastern states, closely mirroring Brazil’s population and economic hubs:
+- **São Paulo (SP)** leads by a wide margin with **41,746 orders**, representing **42%** of total volume.
+- **Rio de Janeiro (RJ)** and **Minas Gerais (MG)** follow with **12.9%** and **11.7%** of orders respectively.
+- Southern states like **Rio Grande do Sul (RS)**, **Paraná (PR)**, and **Santa Catarina (SC)** also contribute significantly, collectively accounting for over **14%** of orders.
 
-**Suggested Visualisations:**  
-Map of Brazil by state with order volume  
-Horizontal bar chart ranking states by order count
+Lower-order volume is seen in northern and northeastern regions, such as **Amazonas (AM)**, **Acre (AC)**, and **Roraima (RR)**, each contributing **less than 0.2%**. This reflects disparities in digital infrastructure, economic activity, and e-commerce access across Brazil.
+
+Understanding this regional distribution can support logistics planning, inventory allocation, and marketing strategies based on local demand.
+
+**Visualisation:**  
+![06_order_volume_by_state](./visualisations/06_order_volume_by_state.png)
 
 ---
 
 ### Question 19: Do rural or urban areas tend to have longer delivery times?
 
 **Insight:**  
-_(To be filled after reviewing results. Example: Rural areas experience delivery times 1.5 days longer on average, likely due to lower logistics density and greater distances.)_
+Rural areas consistently experience longer delivery times than urban areas, likely due to logistics challenges and geographic remoteness:
+- **Rural customers wait an average of 14.0 days** for delivery — about **1.6 days longer** than urban customers.
+- **Urban deliveries average 12.4 days**, benefiting from higher logistics density and proximity to distribution hubs.
+- While rural orders represent only **~10%** of total deliveries, their extended timelines may impact customer satisfaction and repeat purchase rates in these regions.
 
-**Suggested Visualisations:**  
-Side-by-side bar chart comparing average delivery times for urban vs. rural  
-Map overlay with urban/rural segmentation and delivery delays
+These findings highlight the importance of **logistics planning and regional service optimisation**, especially for expanding reach into rural markets.
+
+**Visualisation:**  
+![06_delivery_time_urban_vs_rural](./visualisations/06_delivery_time_urban_vs_rural.png)
 
 ---
 
 ### Section 6: Key Takeaways
 
-- Order volume is heavily concentrated in a few states, reflecting Brazil’s urban demographics and economic hubs.
-- Rural locations are linked with longer delivery times, which may warrant differentiated logistics strategies or clearer expectations.
+- **Orders are highly concentrated in the southeast:** São Paulo alone accounts for over **40%** of all orders, followed by Rio de Janeiro and Minas Gerais. This mirrors broader economic and population patterns, highlighting where logistics and marketing efforts will have the greatest impact.
 
---- 
--->
+- **Northern and remote regions remain underrepresented:** States like Amazonas, Acre, and Roraima collectively account for less than **1%** of order volume. These disparities suggest untapped potential — but also barriers such as limited digital infrastructure or delivery challenges.
+
+- **Rural areas face longer delivery times:** Deliveries to rural customers take **1.6 days longer on average** than to urban areas, which may affect satisfaction and loyalty. This underscores the need for **targeted logistics solutions** when expanding into rural markets.
+
 ---
 
 ## Exploratory: Revenue Discrepancy Checks
